@@ -1,25 +1,32 @@
 /* duration */
 module Duration = {
   type t;
-  external humanize : t => unit => string = "" [@@bs.send];
-  external milliseconds : t => unit => int = "" [@@bs.send];
-  external asMilliseconds : t => unit => int64 = "" [@@bs.send];
-  external seconds : t => unit => int = "" [@@bs.send];
-  external asSeconds : t => unit => int64 = "" [@@bs.send];
-  external minutes : t => unit => int = "" [@@bs.send];
-  external asMinutes : t => unit => int64 = "" [@@bs.send];
-  external hours : t => unit => int = "" [@@bs.send];
-  external asHours : t => unit => int64 = "" [@@bs.send];
-  external days : t => unit => int = "" [@@bs.send];
-  external asDay : t => unit => int64 = "" [@@bs.send];
-  external weeks : t => unit => int = "" [@@bs.send];
-  external asWeeks : t => unit => int64 = "" [@@bs.send];
-  external months : t => unit => int = "" [@@bs.send];
-  external asMonths : t => unit => int64 = "" [@@bs.send];
-  external years : t => unit => int = "" [@@bs.send];
-  external asYears : t => unit => int64 = "" [@@bs.send];
-  external toJSON : t => unit => string = "" [@@bs.send];
+  external humanize : t => string = "" [@@bs.send];
+  external milliseconds : t => int = "" [@@bs.send];
+  external asMilliseconds : t => int = "" [@@bs.send];
+  external seconds : t => int = "" [@@bs.send];
+  external asSeconds : t => int = "" [@@bs.send];
+  external minutes : t => int = "" [@@bs.send];
+  external asMinutes : t => int = "" [@@bs.send];
+  external hours : t => int = "" [@@bs.send];
+  external asHours : t => int = "" [@@bs.send];
+  external days : t => int = "" [@@bs.send];
+  external asDays : t => int = "" [@@bs.send];
+  external weeks : t => int = "" [@@bs.send];
+  external asWeeks : t => int = "" [@@bs.send];
+  external months : t => int = "" [@@bs.send];
+  external asMonths : t => int = "" [@@bs.send];
+  external years : t => int = "" [@@bs.send];
+  external asYears : t => int = "" [@@bs.send];
+  external toJSON : t => string = "" [@@bs.send];
+  external asUnitOfTime : t => string => int = "as" [@@bs.send];
 };
+
+external duration : int => string => Duration.t = "" [@@bs.module "moment"];
+
+external duration_millis : int => Duration.t = "duration" [@@bs.module "moment"];
+
+external duration_format : string => Duration.t = "duration" [@@bs.module "moment"];
 
 module Moment = {
   type t;
@@ -33,16 +40,14 @@ module Moment = {
   external isDST : t => bool = "" [@@bs.send];
   external isLeapYear : t => bool = "" [@@bs.send];
   /* display */
-  external format : t => format::option string => string = "" [@@bs.send];
+  external format : t => format::string => string = "" [@@bs.send];
   external fromNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
-  external from : t => other::t => format::option string => string = "" [@@bs.send];
+  external fromMomemnt : t => other::t => format::option string => string = "from" [@@bs.send];
   external toNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
-  external _to : t => other::t => format::option string => string = "" [@@bs.send];
-  external valueOf : t => unit => int64 = "" [@@bs.send];
-  external daysInMonth : t => unit => int = "" [@@bs.send];
-  external toJSON : t => unit => string = "" [@@bs.send];
-  external duration : t => duration::int => durationUnit::option string => Duration.t =
-    "" [@@bs.send];
+  external toMoment : t => other::t => format::string => string = "to" [@@bs.send];
+  external valueOf : t => int = "" [@@bs.send];
+  external daysInMonth : t => int = "" [@@bs.send];
+  external toJSON : t => string = "" [@@bs.send];
 };
 
 /* parse */
@@ -54,7 +59,7 @@ external moment_with_format : string => string => Moment.t = "moment" [@@bs.modu
 
 external moment_with_formats : string => list string => Moment.t = "moment" [@@bs.module];
 
-external moment_with_timestamp : int64 => Moment.t = "moment" [@@bs.module];
+external moment_with_timestamp : int => Moment.t = "moment" [@@bs.module];
 
 external moment_with_components : list int => Moment.t = "moment" [@@bs.module];
 
