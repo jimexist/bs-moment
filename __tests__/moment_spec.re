@@ -7,15 +7,18 @@ let () =
     "moment"
     (
       fun () => {
-        test "validity" (fun () => Just (Equal true (Moment.isValid (moment "2017-01-01"))));
-        test "invalidity" (fun () => Just (Equal false (Moment.isValid (moment ""))));
-        test "dst" (fun () => Just (Equal false (Moment.isDST (moment "2016-01-01T00:00:00"))));
-        test "leap year" (fun () => Just (Equal true (Moment.isLeapYear (moment "2016-01-01"))));
+        test "validity" (fun () => Just (Equal true (moment "2017-01-01" |> Moment.isValid)));
+        test "invalidity" (fun () => Just (Equal false (moment "" |> Moment.isValid)));
+        test "dst" (fun () => Just (Equal false (moment "2016-01-01T00:00:00" |> Moment.isDST)));
+        test "leap year" (fun () => Just (Equal true (moment "2016-01-01" |> Moment.isLeapYear)));
         test
-          "not leap year" (fun () => Just (Equal false (Moment.isLeapYear (moment "1900-01-01"))));
+          "not leap year"
+          (fun () => Just (Equal false (moment "1900-01-01" |> Moment.isLeapYear)));
         test
           "instantiation"
-          (fun () => Just (Truthy (Moment.isSame (moment "2017-04-01") (moment "2017-04-01"))));
+          (
+            fun () => Just (Equal true (Moment.isSame (moment "2017-04-01") (moment "2017-04-01")))
+          );
         test
           "instantiation with format"
           (
@@ -31,6 +34,7 @@ let () =
               )
           );
         test
-          "now" (fun () => Just (Truthy (Moment.isSameOrBefore (moment_now ()) (moment_now ()))))
+          "now"
+          (fun () => Just (Equal true (Moment.isSameOrBefore (moment_now ()) (moment_now ()))))
       }
     );
