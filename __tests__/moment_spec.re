@@ -118,7 +118,7 @@ let () = {
         test "#asMonths" (fun () => Just (Equal 2. (duration 2 "months" |> Duration.asMonths)));
         test "#years" (fun () => Just (Equal 2 (duration 2 "years" |> Duration.years)));
         test "#asYears" (fun () => Just (Equal 2. (duration 2 "years" |> Duration.asYears)));
-        test "#as" (fun () => Just (Equal 2. (duration 2 "d" |> Duration.asUnitOfTime "d")));
+        test "#as" (fun () => Just (Equal 2. (duration 2 "d" |> Duration.asUnitOfTime `days)));
         test "#toJSON" (fun () => Just (Equal "P2D" (duration 2 "d" |> Duration.toJSON)));
         test "#humanize" (fun () => Just (Equal "2 days" (duration 2 "d" |> Duration.humanize)))
       }
