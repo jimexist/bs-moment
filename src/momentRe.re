@@ -51,8 +51,8 @@ external moment_with_format : string => string => Moment.t = "moment" [@@bs.modu
 
 external moment_with_formats : string => list string => Moment.t = "moment" [@@bs.module];
 
-let moment format::(format: option string)=? value::(v: string) =>
+let moment ::format=? value =>
   switch format {
-  | Some f => moment_with_format v f
-  | None => moment_default_format v
+  | Some f => moment_with_format value f
+  | None => moment_default_format value
   };
