@@ -50,18 +50,40 @@ external duration_format : string => Duration.t = "duration" [@@bs.module "momen
 module Moment = {
   type t;
   external clone : t = "" [@@bs.send.pipe : t];
-  external mutableAdd : Duration.t => unit = "add" [@@bs.send.pipe : t];
-  external mutableSubtract : Duration.t => unit = "subtract" [@@bs.send.pipe : t];
+  external mutableAdd : t => Duration.t => unit = "add" [@@bs.send];
+  let add ::duration moment => {
+    let clone = clone moment;
+    mutableAdd clone duration;
+    clone
+  };
+  external mutableSubtract : t => Duration.t => unit = "subtract" [@@bs.send];
+  let subtract ::duration moment => {
+    let clone = clone moment;
+    mutableSubtract clone duration;
+    clone
+  };
   external mutableStartOf :
+    t =>
     [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
     [@bs.string] =>
     unit =
-    "startOf" [@@bs.send.pipe : t];
+    "startOf" [@@bs.send];
+  let startOf timeUnit moment => {
+    let clone = clone moment;
+    mutableStartOf clone timeUnit;
+    clone
+  };
   external mutableEndOf :
+    t =>
     [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
     [@bs.string] =>
     unit =
-    "endOf" [@@bs.send.pipe : t];
+    "endOf" [@@bs.send];
+  let endOf timeUnit moment => {
+    let clone = clone moment;
+    mutableEndOf clone timeUnit;
+    clone
+  };
   external get :
     [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
     [@bs.string] =>

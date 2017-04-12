@@ -12,7 +12,7 @@ let () = {
           "#clone"
           (fun () => Just (Equal true (moment "2017-01-01" |> Moment.clone |> Moment.isValid)));
         test
-          "#add"
+          "#mutableAdd"
           (
             fun () =>
               Just (
@@ -23,9 +23,26 @@ let () = {
                       (moment "2017-01-04")
                       {
                         let original = moment "2017-01-01";
-                        original |> Moment.mutableAdd (duration 3 `days);
+                        Moment.mutableAdd original (duration 3 `days);
                         original
                       }
+                  )
+              )
+          );
+        test
+          "#add"
+          (
+            fun () =>
+              Just (
+                Equal
+                  true
+                  (
+                    Moment.isSame
+                      (moment "2017-01-04")
+                      (
+                        moment "2017-01-01" |> Moment.add duration::(duration 1 `days) |>
+                        Moment.add duration::(duration 2 `days)
+                      )
                   )
               )
           );
