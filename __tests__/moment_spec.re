@@ -107,12 +107,27 @@ let () = {
           "#defaultFormat" (fun () => Just (Truthy (moment "2016-01-01" |> Moment.defaultFormat)));
         test
           "#valueOf" /* TODO: float? */
-          (fun () => Just (Equal 1451606400000. (moment "2016-01-01 00:00:00Z" |> Moment.valueOf)))
+          (
+            fun () => Just (Equal 1451606400000. (moment "2016-01-01 00:00:00Z" |> Moment.valueOf))
+          );
         /* test TODO: time-zone
            "#toJSON"
            (
              fun () => Just (Equal "2015-12-31T16:00:00.000Z" (moment "2016-01-01" |> Moment.toJSON))
            ) */
+        test
+          "#get" (fun () => Just (Equal 1 (moment "2017-01-02 03:04:05.678" |> Moment.get `day)));
+        test
+          "#second" (fun () => Just (Equal 5 (moment "2017-01-02 03:04:05.678" |> Moment.second)));
+        test
+          "#minute" (fun () => Just (Equal 4 (moment "2017-01-02 03:04:05.678" |> Moment.minute)));
+        test "#hour" (fun () => Just (Equal 3 (moment "2017-01-02 03:04:05.678" |> Moment.hour)));
+        test "#day" (fun () => Just (Equal 1 (moment "2017-01-02 03:04:05.678" |> Moment.day)));
+        test "#week" (fun () => Just (Equal 1 (moment "2017-01-02 03:04:05.678" |> Moment.week)));
+        test
+          "#month" (fun () => Just (Equal 0 (moment "2017-01-02 03:04:05.678" |> Moment.month)));
+        test
+          "#year" (fun () => Just (Equal 2017 (moment "2017-01-02 03:04:05.678" |> Moment.year)))
       }
     );
   describe

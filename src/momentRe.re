@@ -51,6 +51,30 @@ module Moment = {
   type t;
   external clone : t = "" [@@bs.send.pipe : t];
   external mutableAdd : Duration.t => unit = "add" [@@bs.send.pipe : t];
+  external mutableSubtract : Duration.t => unit = "subtract" [@@bs.send.pipe : t];
+  external mutableStartOf :
+    [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+    [@bs.string] =>
+    unit =
+    "startOf" [@@bs.send.pipe : t];
+  external mutableEndOf :
+    [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+    [@bs.string] =>
+    unit =
+    "endOf" [@@bs.send.pipe : t];
+  external get :
+    [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+    [@bs.string] =>
+    int =
+    "" [@@bs.send.pipe : t];
+  external millisecond : int = "" [@@bs.send.pipe : t];
+  external second : int = "" [@@bs.send.pipe : t];
+  external minute : int = "" [@@bs.send.pipe : t];
+  external hour : int = "" [@@bs.send.pipe : t];
+  external day : int = "" [@@bs.send.pipe : t];
+  external week : int = "" [@@bs.send.pipe : t];
+  external month : int = "" [@@bs.send.pipe : t];
+  external year : int = "" [@@bs.send.pipe : t];
   external isValid : t => bool = "" [@@bs.send];
   external isBefore : t => t => bool = "" [@@bs.send];
   external isAfter : t => t => bool = "" [@@bs.send];
