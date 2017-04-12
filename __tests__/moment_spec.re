@@ -8,7 +8,27 @@ let () = {
     "moment"
     (
       fun () => {
-        test "#clone" (fun () => Just (Equal true (moment "2017-01-01" |> Moment.clone |> Moment.isValid)));
+        test
+          "#clone"
+          (fun () => Just (Equal true (moment "2017-01-01" |> Moment.clone |> Moment.isValid)));
+        test
+          "#add"
+          (
+            fun () =>
+              Just (
+                Equal
+                  true
+                  (
+                    Moment.isSame
+                      (moment "2017-01-04")
+                      {
+                        let original = moment "2017-01-01";
+                        original |> Moment.mutableAdd (duration 3 `days);
+                        original
+                      }
+                  )
+              )
+          );
         test "#isValid" (fun () => Just (Equal true (moment "2017-01-01" |> Moment.isValid)));
         test "not #isValid" (fun () => Just (Equal false (moment "" |> Moment.isValid)));
         test
@@ -99,29 +119,29 @@ let () = {
     "moment duration"
     (
       fun () => {
-        test "get duration" (fun () => Just (Truthy (duration 2 "d")));
+        test "get duration" (fun () => Just (Truthy (duration 2 `days)));
         test "get duration millis" (fun () => Just (Truthy (duration_millis 2)));
         test "get duration format" (fun () => Just (Truthy (duration_format "P2D")));
         test
           "#milliseconds"
-          (fun () => Just (Equal 2 (duration 2 "milliseconds" |> Duration.milliseconds)));
-        test "#seconds" (fun () => Just (Equal 2 (duration 2 "seconds" |> Duration.seconds)));
-        test "#asSeconds" (fun () => Just (Equal 2. (duration 2 "seconds" |> Duration.asSeconds)));
-        test "#minutes" (fun () => Just (Equal 2 (duration 2 "minutes" |> Duration.minutes)));
-        test "#asMinutes" (fun () => Just (Equal 2. (duration 2 "minutes" |> Duration.asMinutes)));
-        test "#hours" (fun () => Just (Equal 2 (duration 2 "hours" |> Duration.hours)));
-        test "#asHours" (fun () => Just (Equal 2. (duration 2 "hours" |> Duration.asHours)));
-        test "#days" (fun () => Just (Equal 2 (duration 2 "days" |> Duration.days)));
-        test "#asDays" (fun () => Just (Equal 2. (duration 2 "days" |> Duration.asDays)));
-        test "#weeks" (fun () => Just (Equal 2 (duration 2 "weeks" |> Duration.weeks)));
-        test "#asWeeks" (fun () => Just (Equal 2. (duration 2 "weeks" |> Duration.asWeeks)));
-        test "#months" (fun () => Just (Equal 2 (duration 2 "months" |> Duration.months)));
-        test "#asMonths" (fun () => Just (Equal 2. (duration 2 "months" |> Duration.asMonths)));
-        test "#years" (fun () => Just (Equal 2 (duration 2 "years" |> Duration.years)));
-        test "#asYears" (fun () => Just (Equal 2. (duration 2 "years" |> Duration.asYears)));
-        test "#as" (fun () => Just (Equal 2. (duration 2 "d" |> Duration.asUnitOfTime `days)));
-        test "#toJSON" (fun () => Just (Equal "P2D" (duration 2 "d" |> Duration.toJSON)));
-        test "#humanize" (fun () => Just (Equal "2 days" (duration 2 "d" |> Duration.humanize)))
+          (fun () => Just (Equal 2 (duration 2 `milliseconds |> Duration.milliseconds)));
+        test "#seconds" (fun () => Just (Equal 2 (duration 2 `seconds |> Duration.seconds)));
+        test "#asSeconds" (fun () => Just (Equal 2. (duration 2 `seconds |> Duration.asSeconds)));
+        test "#minutes" (fun () => Just (Equal 2 (duration 2 `minutes |> Duration.minutes)));
+        test "#asMinutes" (fun () => Just (Equal 2. (duration 2 `minutes |> Duration.asMinutes)));
+        test "#hours" (fun () => Just (Equal 2 (duration 2 `hours |> Duration.hours)));
+        test "#asHours" (fun () => Just (Equal 2. (duration 2 `hours |> Duration.asHours)));
+        test "#days" (fun () => Just (Equal 2 (duration 2 `days |> Duration.days)));
+        test "#asDays" (fun () => Just (Equal 2. (duration 2 `days |> Duration.asDays)));
+        test "#weeks" (fun () => Just (Equal 2 (duration 2 `weeks |> Duration.weeks)));
+        test "#asWeeks" (fun () => Just (Equal 2. (duration 2 `weeks |> Duration.asWeeks)));
+        test "#months" (fun () => Just (Equal 2 (duration 2 `months |> Duration.months)));
+        test "#asMonths" (fun () => Just (Equal 2. (duration 2 `months |> Duration.asMonths)));
+        test "#years" (fun () => Just (Equal 2 (duration 2 `years |> Duration.years)));
+        test "#asYears" (fun () => Just (Equal 2. (duration 2 `years |> Duration.asYears)));
+        test "#as" (fun () => Just (Equal 2. (duration 2 `days |> Duration.asUnitOfTime `days)));
+        test "#toJSON" (fun () => Just (Equal "P2D" (duration 2 `days |> Duration.toJSON)));
+        test "#humanize" (fun () => Just (Equal "2 days" (duration 2 `days |> Duration.humanize)))
       }
     )
 };

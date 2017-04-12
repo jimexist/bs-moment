@@ -36,7 +36,12 @@ module Duration = {
     "as" [@@bs.send.pipe : t];
 };
 
-external duration : int => string => Duration.t = "" [@@bs.module "moment"];
+external duration :
+  int =>
+  [ | `years | `quarters | `months | `weeks | `days | `hours | `minutes | `seconds | `milliseconds]
+  [@bs.string] =>
+  Duration.t =
+  "" [@@bs.module "moment"];
 
 external duration_millis : int => Duration.t = "duration" [@@bs.module "moment"];
 
@@ -45,6 +50,7 @@ external duration_format : string => Duration.t = "duration" [@@bs.module "momen
 module Moment = {
   type t;
   external clone : t = "" [@@bs.send.pipe : t];
+  external mutableAdd : Duration.t => unit = "add" [@@bs.send.pipe : t];
   external isValid : t => bool = "" [@@bs.send];
   external isBefore : t => t => bool = "" [@@bs.send];
   external isAfter : t => t => bool = "" [@@bs.send];
