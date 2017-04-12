@@ -8,6 +8,7 @@ let () = {
     "moment"
     (
       fun () => {
+        test "#clone" (fun () => Just (Equal true (moment "2017-01-01" |> Moment.clone |> Moment.isValid)));
         test "#isValid" (fun () => Just (Equal true (moment "2017-01-01" |> Moment.isValid)));
         test "not #isValid" (fun () => Just (Equal false (moment "" |> Moment.isValid)));
         test

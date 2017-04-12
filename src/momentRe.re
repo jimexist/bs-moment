@@ -44,6 +44,7 @@ external duration_format : string => Duration.t = "duration" [@@bs.module "momen
 
 module Moment = {
   type t;
+  external clone : t = "" [@@bs.send.pipe : t];
   external isValid : t => bool = "" [@@bs.send];
   external isBefore : t => t => bool = "" [@@bs.send];
   external isAfter : t => t => bool = "" [@@bs.send];
