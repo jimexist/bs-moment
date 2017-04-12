@@ -1,0 +1,23 @@
+{
+  "name": "bs-moment",
+  "version": "0.0.1",
+  "description": "BuckleScript bindings for Moment.js",
+  "main": "index.js",
+  "repository": "git@github.com:BuckleTypes/bs-moment.git",
+  "author": "Jiayu Liu <jiayu@madadata.com>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "build": "bsb -make-world",
+    "pretest": "yarn run build",
+    "test": "jest",
+    "start": "yarn run build -- -w"
+  },
+  "devDependencies": {
+    "bs-jest": "BuckleTypes/bs-jest",
+    "bs-platform": "^1.6.0",
+    "husky": "^0.13.3",
+    "jest": "^19.0.2",
+    "moment": "^2.18.1"
+  }
+}

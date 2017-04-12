@@ -1,0 +1,15 @@
+{
+  "name" : "bs-moment",
+  "sources" : [
+    {
+      "dir": "src",
+    },
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    }
+  ],
+  "bs-dependencies": [
+    "bs-jest"
+  ]
+}
