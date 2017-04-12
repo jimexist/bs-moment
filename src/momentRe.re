@@ -3,23 +3,23 @@ module Duration = {
   type t;
   external humanize : t => string = "" [@@bs.send];
   external milliseconds : t => int = "" [@@bs.send];
-  external asMilliseconds : t => int = "" [@@bs.send];
+  external asMilliseconds : t => float = "" [@@bs.send];
   external seconds : t => int = "" [@@bs.send];
-  external asSeconds : t => int = "" [@@bs.send];
+  external asSeconds : t => float = "" [@@bs.send];
   external minutes : t => int = "" [@@bs.send];
-  external asMinutes : t => int = "" [@@bs.send];
+  external asMinutes : t => float = "" [@@bs.send];
   external hours : t => int = "" [@@bs.send];
-  external asHours : t => int = "" [@@bs.send];
+  external asHours : t => float = "" [@@bs.send];
   external days : t => int = "" [@@bs.send];
-  external asDays : t => int = "" [@@bs.send];
+  external asDays : t => float = "" [@@bs.send];
   external weeks : t => int = "" [@@bs.send];
-  external asWeeks : t => int = "" [@@bs.send];
+  external asWeeks : t => float = "" [@@bs.send];
   external months : t => int = "" [@@bs.send];
-  external asMonths : t => int = "" [@@bs.send];
+  external asMonths : t => float = "" [@@bs.send];
   external years : t => int = "" [@@bs.send];
-  external asYears : t => int = "" [@@bs.send];
+  external asYears : t => float = "" [@@bs.send];
   external toJSON : t => string = "" [@@bs.send];
-  external asUnitOfTime : t => string => int = "as" [@@bs.send];
+  external asUnitOfTime : string => float = "as" [@@bs.send.pipe : t];
 };
 
 external duration : int => string => Duration.t = "" [@@bs.module "moment"];
@@ -40,12 +40,13 @@ module Moment = {
   external isDST : t => bool = "" [@@bs.send];
   external isLeapYear : t => bool = "" [@@bs.send];
   /* display */
-  external format : t => format::string => string = "" [@@bs.send];
+  external format : string => string = "" [@@bs.send.pipe : t];
+  external defaultFormat : string = "format" [@@bs.send.pipe : t];
   external fromNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
   external fromMomemnt : t => other::t => format::option string => string = "from" [@@bs.send];
   external toNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
   external toMoment : t => other::t => format::string => string = "to" [@@bs.send];
-  external valueOf : t => int = "" [@@bs.send];
+  external valueOf : t => float = "" [@@bs.send];
   external daysInMonth : t => int = "" [@@bs.send];
   external toJSON : t => string = "" [@@bs.send];
 };

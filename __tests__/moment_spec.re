@@ -2,7 +2,7 @@ open Jest;
 
 open MomentRe;
 
-/* note that this is inter-op test, not test for moment.js, i.e. test comprehensiveness is not the goal */
+/* note that this is an interops test, not tests for moment.js itself, i.e. test comprehensiveness is not the goal */
 let () = {
   describe
     "moment"
@@ -80,9 +80,13 @@ let () = {
         test
           "#format"
           (
-            fun () =>
-              Just (Equal "2016-01-01" (Moment.format format::"YYYY-MM-DD" (moment "2016-01-01")))
-          )
+            fun () => Just (Equal "2016-01-01" (moment "2016-01-01" |> Moment.format "YYYY-MM-DD"))
+          );
+        test /* TODO: test this time-zone independently */
+          "#defaultFormat" (fun () => Just (Truthy (moment "2016-01-01" |> Moment.defaultFormat)));
+        test
+          "#valueOf" /* TODO: float? */
+          (fun () => Just (Equal 1451606400000. (moment "2016-01-01 00:00:00Z" |> Moment.valueOf)))
         /* test TODO: time-zone
            "#toJSON"
            (
@@ -101,20 +105,20 @@ let () = {
           "#milliseconds"
           (fun () => Just (Equal 2 (duration 2 "milliseconds" |> Duration.milliseconds)));
         test "#seconds" (fun () => Just (Equal 2 (duration 2 "seconds" |> Duration.seconds)));
-        test "#asSeconds" (fun () => Just (Equal 2 (duration 2 "seconds" |> Duration.asSeconds)));
+        test "#asSeconds" (fun () => Just (Equal 2. (duration 2 "seconds" |> Duration.asSeconds)));
         test "#minutes" (fun () => Just (Equal 2 (duration 2 "minutes" |> Duration.minutes)));
-        test "#asMinutes" (fun () => Just (Equal 2 (duration 2 "minutes" |> Duration.asMinutes)));
+        test "#asMinutes" (fun () => Just (Equal 2. (duration 2 "minutes" |> Duration.asMinutes)));
         test "#hours" (fun () => Just (Equal 2 (duration 2 "hours" |> Duration.hours)));
-        test "#asHours" (fun () => Just (Equal 2 (duration 2 "hours" |> Duration.asHours)));
+        test "#asHours" (fun () => Just (Equal 2. (duration 2 "hours" |> Duration.asHours)));
         test "#days" (fun () => Just (Equal 2 (duration 2 "days" |> Duration.days)));
-        test "#asDays" (fun () => Just (Equal 2 (duration 2 "days" |> Duration.asDays)));
+        test "#asDays" (fun () => Just (Equal 2. (duration 2 "days" |> Duration.asDays)));
         test "#weeks" (fun () => Just (Equal 2 (duration 2 "weeks" |> Duration.weeks)));
-        test "#asWeeks" (fun () => Just (Equal 2 (duration 2 "weeks" |> Duration.asWeeks)));
+        test "#asWeeks" (fun () => Just (Equal 2. (duration 2 "weeks" |> Duration.asWeeks)));
         test "#months" (fun () => Just (Equal 2 (duration 2 "months" |> Duration.months)));
-        test "#asMonths" (fun () => Just (Equal 2 (duration 2 "months" |> Duration.asMonths)));
+        test "#asMonths" (fun () => Just (Equal 2. (duration 2 "months" |> Duration.asMonths)));
         test "#years" (fun () => Just (Equal 2 (duration 2 "years" |> Duration.years)));
-        test "#asYears" (fun () => Just (Equal 2 (duration 2 "years" |> Duration.asYears)));
-        test "#as" (fun () => Just (Equal 2 (Duration.asUnitOfTime (duration 2 "d") "d" )));
+        test "#asYears" (fun () => Just (Equal 2. (duration 2 "years" |> Duration.asYears)));
+        test "#as" (fun () => Just (Equal 2. (duration 2 "d" |> Duration.asUnitOfTime "d")));
         test "#toJSON" (fun () => Just (Equal "P2D" (duration 2 "d" |> Duration.toJSON)));
         test "#humanize" (fun () => Just (Equal "2 days" (duration 2 "d" |> Duration.humanize)))
       }
