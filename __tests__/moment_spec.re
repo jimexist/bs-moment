@@ -62,18 +62,9 @@ let () = {
         test
           "instantiation with format"
           (
-            fun () =>
-              Just (
-                Equal
-                  true
-                  (
-                    Moment.isSame
-                      (moment format::"YYYY-MM-DD" "2017-04-01")
-                      (moment format::"YYYY-MM-DD" "2017-04-01")
-                  )
-              )
+            fun () => Just (Equal true (Moment.isSame (moment "2017-04-01") (moment "2017-04-01")))
           );
-        test ".now" (fun () => Just (Equal true (moment_now () |> Moment.isValid)));
+        test ".now" (fun () => Just (Equal true (momentNow () |> Moment.isValid)));
         test
           "#isSame"
           (
@@ -152,8 +143,8 @@ let () = {
     (
       fun () => {
         test "get duration" (fun () => Just (Truthy (duration 2 `days)));
-        test "get duration millis" (fun () => Just (Truthy (duration_millis 2)));
-        test "get duration format" (fun () => Just (Truthy (duration_format "P2D")));
+        test "get duration millis" (fun () => Just (Truthy (durationMillis 2)));
+        test "get duration format" (fun () => Just (Truthy (durationFormat "P2D")));
         test
           "#milliseconds"
           (fun () => Just (Equal 2 (duration 2 `milliseconds |> Duration.milliseconds)));
