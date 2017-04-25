@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "bs-jest": "BuckleTypes/bs-jest",
-    "bs-platform": "^1.6.0",
+    "bs-platform": "^1.7.1",
     "husky": "^0.13.3",
     "jest": "^19.0.2",
     "moment": "^2.18.1"
