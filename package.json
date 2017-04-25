@@ -14,7 +14,7 @@
     "start": "yarn run build -- -w"
   },
   "devDependencies": {
-    "bs-jest": "BuckleTypes/bs-jest",
+    "bs-jest": "^0.1.0",
     "bs-platform": "^1.7.1",
     "husky": "^0.13.3",
     "jest": "^19.0.2",
