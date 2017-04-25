@@ -1,145 +1,183 @@
 open Jest;
 
-open Expect;
-
 open MomentRe;
 
 /* note that this is an interops test, not tests for moment.js itself, i.e. test comprehensiveness is not the goal */
-let () = describe "moment" (fun () => {
-        test "#clone" (fun () => expect (moment "2017-01-01" |> Moment.clone |> Moment.isValid) = true);
-        test "#mutableAdd" ( fun () => expect (
-                    Moment.isSame
-                      (moment "2017-01-04")
-                      {
-                        let original = moment "2017-01-01";
-                        Moment.mutableAdd original (duration 3 `days);
-                        original
-                      }
-                  ) = true);
+let () =
+  describe
+    "moment"
+    ExpectJs.(
+      fun () => {
         test
-          "#add" (
+          "#clone"
+          (fun () => expect (moment "2017-01-01" |> Moment.clone |> Moment.isValid) |> toBe true);
+        test
+          "#mutableAdd"
+          (
             fun () =>
-              expect
-                  (
-                    Moment.isSame
-                      (moment "2017-01-04")
-                      (
-                        moment "2017-01-01" |> Moment.add duration::(duration 1 `days) |>
-                        Moment.add duration::(duration 2 `days)
-                      )
-                  ) = true;
-              );
-        test "#isValid" (fun () => expect (moment "2017-01-01" |> Moment.isValid) = true);
-        test "not #isValid" (fun () => expect (moment "" |> Moment.isValid) = false);
+              expect (
+                Moment.isSame
+                  (moment "2017-01-04")
+                  {
+                    let original = moment "2017-01-01";
+                    Moment.mutableAdd original (duration 3 `days);
+                    original
+                  }
+              ) |>
+              toBe true
+          );
         test
-          "#isDST" (fun () => expect (moment "2016-01-01T00:00:00" |> Moment.isDST) = false);
-        test "leap year" (fun () => expect true = (moment "2016-01-01" |> Moment.isLeapYear));
+          "#add"
+          (
+            fun () =>
+              expect (
+                Moment.isSame
+                  (moment "2017-01-04")
+                  (
+                    moment "2017-01-01" |> Moment.add duration::(duration 1 `days) |>
+                    Moment.add duration::(duration 2 `days)
+                  )
+              ) |>
+              toBe true
+          );
+        test "#isValid" (fun () => expect (moment "2017-01-01" |> Moment.isValid) |> toBe true);
+        test "not #isValid" (fun () => expect (moment "" |> Moment.isValid) |> toBe false);
+        test
+          "#isDST" (fun () => expect (moment "2016-01-01T00:00:00" |> Moment.isDST) |> toBe false);
+        test
+          "leap year" (fun () => expect (moment "2016-01-01" |> Moment.isLeapYear) |> toBe true);
         test
           "not leap year"
-          (fun () => expect false =(moment "1900-01-01" |> Moment.isLeapYear));
+          (fun () => expect (moment "1900-01-01" |> Moment.isLeapYear) |> toBe false);
         test
           "instantiation"
           (
-            fun () => expect true =(Moment.isSame (moment "2017-04-01") (moment "2017-04-01"))
+            fun () =>
+              expect (Moment.isSame (moment "2017-04-01") (moment "2017-04-01")) |> toBe true
           );
         test
           "instantiation with format"
           (
-            fun () => expect true =(Moment.isSame (moment "2017-04-01") (moment "2017-04-01"))
+            fun () =>
+              expect (Moment.isSame (moment "2017-04-01") (moment "2017-04-01")) |> toBe true
           );
-        test ".now" (fun () => expect true= (momentNow () |> Moment.isValid));
+        test ".now" (fun () => expect (momentNow () |> Moment.isValid) |> toBe true);
         test
           "#isSame"
           (
-            fun () => expect true (Moment.isSame (moment "2016-01-01") (moment "2016-01-01"))
+            fun () =>
+              expect (Moment.isSame (moment "2016-01-01") (moment "2016-01-01")) |> toBe true
           );
         test
           "#isBefore"
           (
             fun () =>
-              expect true =(Moment.isBefore (moment "2016-01-01") (moment "2016-01-02"))
+              expect (Moment.isBefore (moment "2016-01-01") (moment "2016-01-02")) |> toBe true
           );
         test
           "#isSameOrBefore"
           (
             fun () =>
-              expect true= (Moment.isSameOrBefore (moment "2016-01-01") (moment "2016-01-02"))
+              expect (Moment.isSameOrBefore (moment "2016-01-01") (moment "2016-01-02")) |>
+              toBe true
           );
         test
           "#isAfter"
           (
-            fun () => expect true =(Moment.isAfter (moment "2016-01-02") (moment "2016-01-01"))
+            fun () =>
+              expect (Moment.isAfter (moment "2016-01-02") (moment "2016-01-01")) |> toBe true
           );
         test
           "#isSameOrAfter"
           (
             fun () =>
-              expect true =(Moment.isSameOrAfter (moment "2016-01-02") (moment "2016-01-01"))
+              expect (Moment.isSameOrAfter (moment "2016-01-02") (moment "2016-01-01")) |>
+              toBe true
           );
         test
           "#isBetween"
           (
             fun () =>
-              expect true =
-                    Moment.isBetween
-                      (moment "2016-01-02") (moment "2016-01-01") (moment "2016-01-03")
-
-
+              expect (
+                Moment.isBetween (moment "2016-01-02") (moment "2016-01-01") (moment "2016-01-03")
+              ) |>
+              toBe true
           );
         test
           "#format"
           (
-            fun () => expect "2016-01-01" (moment "2016-01-01" |> Moment.format "YYYY-MM-DD"))
+            fun () =>
+              expect (moment "2016-01-01" |> Moment.format "YYYY-MM-DD") |> toBe "2016-01-01"
           );
         test /* TODO: test this time-zone independently */
-          "#defaultFormat" (fun () => expect true = (moment "2016-01-01" |> Moment.defaultFormat));
+          "#defaultFormat"
+          (
+            fun () =>
+              expect (moment "2016-01-01" |> Moment.defaultFormat) |> toContainString "2016-01-01"
+          );
         test
           "#valueOf" /* TODO: float? */
           (
-            fun () => expect 1451606400000. (moment "2016-01-01 00:00:00Z" |> Moment.valueOf))
+            fun () =>
+              expect (moment "2016-01-01 00:00:00Z" |> Moment.valueOf) |>
+              toBeCloseTo 1451606400000.
           );
-        /* test TODO: time-zone
-           "#toJSON"
-           (
-             fun () => expect "2015-12-31T16:00:00.000Z" (moment "2016-01-01" |> Moment.toJSON))
-           ) */
         test
-          "#get" (fun () => expect  1 = (moment "2017-01-02 03:04:05.678" |> Moment.get `day));
+          "#toJSON"
+          (fun () => expect (moment "2016-01-01" |> Moment.toJSON) |> toContainString "000Z");
         test
-          "#second" (fun () => expect 5= (moment "2017-01-02 03:04:05.678" |> Moment.second));
+          "#get"
+          (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.get `day) |> toBe 1);
         test
-          "#minute" (fun () => expect 4 =(moment "2017-01-02 03:04:05.678" |> Moment.minute));
-        test "#hour" (fun () => expect 3 =(moment "2017-01-02 03:04:05.678" |> Moment.hour));
-        test "#day" (fun () => expect 1 =(moment "2017-01-02 03:04:05.678" |> Moment.day));
-        test "#week" (fun () => expect 1= (moment "2017-01-02 03:04:05.678" |> Moment.week));
+          "#second"
+          (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.second) |> toBe 5);
         test
-          "#month" (fun () => expect 0 =(moment "2017-01-02 03:04:05.678" |> Moment.month));
+          "#minute"
+          (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.minute) |> toBe 4);
         test
-          "#year" (fun () => expect (Equal 2017 (moment "2017-01-02 03:04:05.678" |> Moment.year))
-      });
+          "#hour" (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.hour) |> toBe 3);
+        test "#day" (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.day) |> toBe 1);
+        test
+          "#week" (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.week) |> toBe 1);
+        test
+          "#month" (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.month) |> toBe 0);
+        test
+          "#year" (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.year) |> toBe 2017)
+      }
+    );
 
-let () = describe "moment duration" ( fun () => {
-      test "get duration" (fun () => expect 0 = (duration 2 `days));
-      test "get duration millis" (fun () => expect 0= (durationMillis 2));
-      test "get duration format" (fun () => expect 0= (durationFormat "P2D"));
-      test
-        "#milliseconds"
-        (fun () => expect 2 =(duration 2 `milliseconds |> Duration.milliseconds));
-      test "#seconds" (fun () => expect 2= (duration 2 `seconds |> Duration.seconds));
-      test "#asSeconds" (fun () => expect 2. =(duration 2 `seconds |> Duration.asSeconds));
-      test "#minutes" (fun () => expect 2 =(duration 2 `minutes |> Duration.minutes));
-      test "#asMinutes" (fun () => expect 2. =(duration 2 `minutes |> Duration.asMinutes));
-      test "#hours" (fun () => expect 2 =(duration 2 `hours |> Duration.hours));
-      test "#asHours" (fun () => expect 2. =(duration 2 `hours |> Duration.asHours));
-      test "#days" (fun () => expect 2= (duration 2 `days |> Duration.days));
-      test "#asDays" (fun () => expect 2.= (duration 2 `days |> Duration.asDays));
-      test "#weeks" (fun () => expect 2 =(duration 2 `weeks |> Duration.weeks));
-      test "#asWeeks" (fun () => expect 2. =(duration 2 `weeks |> Duration.asWeeks));
-      test "#months" (fun () => expect 2 =(duration 2 `months |> Duration.months));
-      test "#asMonths" (fun () => expect 2.= (duration 2 `months |> Duration.asMonths));
-      test "#years" (fun () => expect 2 =(duration 2 `years |> Duration.years));
-      test "#asYears" (fun () => expect 2. =(duration 2 `years |> Duration.asYears));
-      test "#as" (fun () => expect 2. =(duration 2 `days |> Duration.asUnitOfTime `days));
-      test "#toJSON" (fun () => expect "P2D"= (duration 2 `days |> Duration.toJSON));
-      test "#humanize" (fun () => expect "2 days" = (duration 2 `days |> Duration.humanize))
-    });
+let () =
+  describe
+    "moment duration"
+    ExpectJs.(
+      fun () => {
+        test "get duration" (fun () => expect (duration 2 `days) |> toBeTruthy);
+        test "get duration millis" (fun () => expect (durationMillis 2) |> toBeTruthy);
+        test
+          "get duration format"
+          (fun () => expect (durationFormat "P2D" |> Duration.toJSON) |> toBe "P2D");
+        test
+          "#milliseconds"
+          (fun () => expect (duration 2 `milliseconds |> Duration.milliseconds) |> toBe 2);
+        test "#seconds" (fun () => expect (duration 2 `seconds |> Duration.seconds) |> toBe 2);
+        test
+          "#asSeconds" (fun () => expect (duration 2 `seconds |> Duration.asSeconds) |> toBe 2.);
+        test "#minutes" (fun () => expect (duration 2 `minutes |> Duration.minutes) |> toBe 2);
+        test
+          "#asMinutes" (fun () => expect (duration 2 `minutes |> Duration.asMinutes) |> toBe 2.);
+        test "#hours" (fun () => expect (duration 2 `hours |> Duration.hours) |> toBe 2);
+        test "#asHours" (fun () => expect (duration 2 `hours |> Duration.asHours) |> toBe 2.);
+        test "#days" (fun () => expect (duration 2 `days |> Duration.days) |> toBe 2);
+        test "#asDays" (fun () => expect (duration 2 `days |> Duration.asDays) |> toBe 2.);
+        test "#weeks" (fun () => expect (duration 2 `weeks |> Duration.weeks) |> toBe 2);
+        test "#asWeeks" (fun () => expect (duration 2 `weeks |> Duration.asWeeks) |> toBe 2.);
+        test "#months" (fun () => expect (duration 2 `months |> Duration.months) |> toBe 2);
+        test "#asMonths" (fun () => expect (duration 2 `months |> Duration.asMonths) |> toBe 2.);
+        test "#years" (fun () => expect (duration 2 `years |> Duration.years) |> toBe 2);
+        test "#asYears" (fun () => expect (duration 2 `years |> Duration.asYears) |> toBe 2.);
+        test "#as" (fun () => expect (duration 2 `days |> Duration.asUnitOfTime `days) |> toBe 2.);
+        test "#toJSON" (fun () => expect (duration 2 `days |> Duration.toJSON) |> toBe "P2D");
+        test
+          "#humanize" (fun () => expect (duration 2 `days |> Duration.humanize) |> toBe "2 days")
+      }
+    );
