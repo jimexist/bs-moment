@@ -43,9 +43,9 @@ external duration :
   Duration.t =
   "" [@@bs.module "moment"];
 
-external duration_millis : int => Duration.t = "duration" [@@bs.module "moment"];
+external durationMillis : int => Duration.t = "duration" [@@bs.module "moment"];
 
-external duration_format : string => Duration.t = "duration" [@@bs.module "moment"];
+external durationFormat : string => Duration.t = "duration" [@@bs.module "moment"];
 
 module Moment = {
   type t;
@@ -119,20 +119,20 @@ module Moment = {
 };
 
 /* parse */
-external moment_now : unit => Moment.t = "moment" [@@bs.module];
+external momentNow : unit => Moment.t = "moment" [@@bs.module];
 
-external moment_default_format : string => Moment.t = "moment" [@@bs.module];
+external momentDefaultFormat : string => Moment.t = "moment" [@@bs.module];
 
-external moment_with_format : string => string => Moment.t = "moment" [@@bs.module];
+external momentWithFormat : string => string => Moment.t = "moment" [@@bs.module];
 
-external moment_with_formats : string => list string => Moment.t = "moment" [@@bs.module];
+external momentWithFormats : string => list string => Moment.t = "moment" [@@bs.module];
 
-external moment_with_timestamp : int => Moment.t = "moment" [@@bs.module];
+external momentWithTimestamp : int => Moment.t = "moment" [@@bs.module];
 
-external moment_with_components : list int => Moment.t = "moment" [@@bs.module];
+external momentWithComponents : list int => Moment.t = "moment" [@@bs.module];
 
 let moment ::format=? value =>
   switch format {
-  | Some f => moment_with_format value f
-  | None => moment_default_format value
+  | Some f => momentWithFormats value f
+  | None => momentDefaultFormat value
   };
