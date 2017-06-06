@@ -127,7 +127,7 @@ external momentWithFormat : string => string => Moment.t = "moment" [@@bs.module
 
 external momentWithFormats : string => list string => Moment.t = "moment" [@@bs.module];
 
-external momentWithTimestamp : int => Moment.t = "moment" [@@bs.module];
+external momentWithTimestampMS : float => Moment.t = "moment" [@@bs.module];
 
 external momentWithComponents : list int => Moment.t = "moment" [@@bs.module];
 
