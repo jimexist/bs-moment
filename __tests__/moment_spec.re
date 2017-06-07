@@ -61,6 +61,17 @@ let () =
             fun () =>
               expect (Moment.isSame (moment "2017-04-01") (moment "2017-04-01")) |> toBe true
           );
+        test
+          "instantiation momentWithTimestampMS (float)"
+          (
+            fun () =>
+              expect (
+                Moment.isSame
+                  (moment "2017-06-12T18:30:00+02:00")
+                  (momentWithTimestampMS (Int64.of_string "1497285000000" |> Int64.to_float))
+              ) |>
+              toBe true
+          );
         test ".now" (fun () => expect (momentNow () |> Moment.isValid) |> toBe true);
         test
           "#isSame"
