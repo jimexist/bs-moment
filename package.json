@@ -6,10 +6,6 @@
   "repository": "git@github.com:BuckleTypes/bs-moment.git",
   "author": "Jiayu Liu <jimexist@gmail.com>",
   "license": "MIT",
-  "files": [
-    "lib/js",
-    "src"
-  ],
   "scripts": {
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
