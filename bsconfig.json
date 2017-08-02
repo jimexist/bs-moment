@@ -9,7 +9,7 @@
       "type": "dev"
     }
   ],
-  "bs-dependencies": [
+  "bs-dev-dependencies": [
     "bs-jest"
   ]
 }
