@@ -136,7 +136,7 @@ external diff :
   Moment.t =>
   [ | `years | `quarters | `months | `weeks | `days | `hours | `minutes | `seconds | `milliseconds]
   [@bs.string] =>
-  int =
+  float =
   "" [@@bs.send];
 
 let moment ::format=? value =>

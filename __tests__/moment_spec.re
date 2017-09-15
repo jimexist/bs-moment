@@ -200,7 +200,7 @@ let () =
       fun () => {
         test
           "should return correct difference of moments in days"
-          (fun () => expect (diff (moment "2017-01-02") (moment "2017-01-01") `days) |> toBe 1);
+          (fun () => expect (diff (moment "2017-01-02") (moment "2017-01-01") `days) |> toBe 1.);
         test
           "should return correct difference of moments in hours"
           (
@@ -208,7 +208,7 @@ let () =
               expect (
                 diff (moment "2017-01-01 02:00:00.000") (moment "2017-01-01 00:00:00.000") `hours
               ) |>
-              toBe 2
+              toBe 2.
           );
         test
           "should be able to handle negative difference of moments"
@@ -217,7 +217,7 @@ let () =
               expect (
                 diff (moment "2017-01-01 00:00:00.000") (moment "2017-01-01 02:00:00.000") `hours
               ) |>
-              toBe (-2)
+              toBe (-2.)
           );
         test
           "should return correct difference of moments in hours"
@@ -226,7 +226,7 @@ let () =
               expect (
                 diff (moment "2017-01-01 00:25:05.000") (moment "2017-01-01 00:00:00.000") `minutes
               ) |>
-              toBe 25
+              toBe 25.
           )
       }
     );
