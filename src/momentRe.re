@@ -131,6 +131,14 @@ external momentWithTimestampMS : float => Moment.t = "moment" [@@bs.module];
 
 external momentWithComponents : list int => Moment.t = "moment" [@@bs.module];
 
+external diff :
+  Moment.t =>
+  Moment.t =>
+  [ | `years | `quarters | `months | `weeks | `days | `hours | `minutes | `seconds | `milliseconds]
+  [@bs.string] =>
+  float =
+  "" [@@bs.send];
+
 let moment ::format=? value =>
   switch format {
   | Some f => momentWithFormats value f
