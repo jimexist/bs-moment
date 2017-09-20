@@ -2,7 +2,7 @@
   "name": "bs-moment",
   "version": "0.1.4",
   "description": "BuckleScript bindings for Moment.js",
-  "main": "lib/js/src/momentRe.js",
+  "main": "lib/js/src/MomentRe.js",
   "repository": "git@github.com:BuckleTypes/bs-moment.git",
   "author": "Jiayu Liu <jimexist@gmail.com>",
   "license": "MIT",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "bs-jest": "^0.1.0",
-    "bs-platform": "^1.9.0",
+    "bs-platform": "^1.9.2",
     "husky": "^0.13.3",
     "jest": "^19.0.2",
     "moment": "^2.18.1"
