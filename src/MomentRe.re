@@ -110,7 +110,7 @@ module Moment = {
   external format : string => string = "" [@@bs.send.pipe : t];
   external defaultFormat : string = "format" [@@bs.send.pipe : t];
   external fromNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
-  external fromMomemnt : t => other::t => format::option string => string = "from" [@@bs.send];
+  external fromMoment : t => other::t => format::option string => string = "from" [@@bs.send];
   external toNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
   external toMoment : t => other::t => format::string => string = "to" [@@bs.send];
   external valueOf : t => float = "" [@@bs.send];
