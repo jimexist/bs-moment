@@ -133,6 +133,8 @@ external momentWithTimestampMS : float => Moment.t = "moment" [@@bs.module];
 
 external momentWithComponents : list int => Moment.t = "moment" [@@bs.module];
 
+let momentWithUnix (timestamp: int) => momentWithTimestampMS(float_of_int timestamp *. 1000.0);
+
 external diff :
   Moment.t =>
   Moment.t =>

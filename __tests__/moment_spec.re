@@ -78,6 +78,17 @@ let () =
               ) |>
               toBe true
           );
+        test
+          "instantiation momentWithUnix (int)"
+          (
+            fun () =>
+              expect (
+                Moment.isSame
+                  (moment "2016-01-01")
+                  (momentWithUnix 1451602800)
+              ) |>
+              toBe true
+          );
         test ".now" (fun () => expect (momentNow () |> Moment.isValid) |> toBe true);
         test
           "#isSame"
