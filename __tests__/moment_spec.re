@@ -146,6 +146,9 @@ let () =
           "#toDate"
           (fun () => expect (isJsDateValid (moment "2016-01-01" |> Moment.toDate)) |> toBe true);
         test
+          "#toUnix"
+          (fun () => expect (moment "2016-01-01" |> Moment.toUnix) |> toBe 1451602800);
+        test
           "#get"
           (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.get `day) |> toBe 1);
         test
