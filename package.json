@@ -1,6 +1,6 @@
 {
   "name": "bs-moment",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "BuckleScript bindings for Moment.js",
   "main": "lib/js/src/MomentRe.js",
   "repository": "git@github.com:BuckleTypes/bs-moment.git",
