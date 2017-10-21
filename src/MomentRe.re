@@ -116,6 +116,7 @@ module Moment = {
   external valueOf : t => float = "" [@@bs.send];
   external daysInMonth : t => int = "" [@@bs.send];
   external toJSON : t => string = "" [@@bs.send];
+  external toDate : t => Js.Date.t = "" [@@bs.send];
 };
 
 /* parse */
