@@ -2,6 +2,12 @@ open Jest;
 
 open MomentRe;
 
+let isJsDateValid: Js.Date.t => bool = [%bs.raw {|
+  function(date) {
+    return (date instanceof Date && !isNaN(date.valueOf())) ? 1 : 0;
+  }
+|}];
+
 /* note that this is an interops test, not tests for moment.js itself, i.e. test comprehensiveness is not the goal */
 let () =
   describe
@@ -136,6 +142,9 @@ let () =
         test
           "#toJSON"
           (fun () => expect (moment "2016-01-01" |> Moment.toJSON) |> toContainString "000Z");
+        test
+          "#toDate"
+          (fun () => expect (isJsDateValid (moment "2016-01-01" |> Moment.toDate)) |> toBe true);
         test
           "#get"
           (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.get `day) |> toBe 1);
