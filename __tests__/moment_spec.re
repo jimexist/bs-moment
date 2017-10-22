@@ -68,6 +68,12 @@ let () =
               expect (Moment.isSame (moment "2017-04-01") (moment "2017-04-01")) |> toBe true
           );
         test
+          "instantiation with date"
+          (
+            fun () =>
+              expect (Moment.isSame (momentWithDate (Js.Date.fromString "6 Mar 2017 21:22:23 GMT")) (moment "6 Mar 2017 21:22:23 GMT")) |> toBe true
+          );
+        test
           "instantiation momentWithTimestampMS (float)"
           (
             fun () =>
