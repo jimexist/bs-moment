@@ -117,6 +117,7 @@ module Moment = {
   external daysInMonth : t => int = "" [@@bs.send];
   external toJSON : t => string = "" [@@bs.send];
   external toDate : t => Js.Date.t = "" [@@bs.send];
+  external toUnix : t => int = "unix" [@@bs.send];
 };
 
 /* parse */
@@ -131,6 +132,8 @@ external momentWithFormats : string => list string => Moment.t = "moment" [@@bs.
 external momentWithTimestampMS : float => Moment.t = "moment" [@@bs.module];
 
 external momentWithComponents : list int => Moment.t = "moment" [@@bs.module];
+
+let momentWithUnix (timestamp: int) => momentWithTimestampMS(float_of_int timestamp *. 1000.0);
 
 external diff :
   Moment.t =>

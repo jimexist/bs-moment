@@ -78,6 +78,17 @@ let () =
               ) |>
               toBe true
           );
+        test
+          "instantiation momentWithUnix (int)"
+          (
+            fun () =>
+              expect (
+                Moment.isSame
+                  (moment "6 Mar 2017 21:22:23 GMT")
+                  (momentWithUnix 1488835343)
+              ) |>
+              toBe true
+          );
         test ".now" (fun () => expect (momentNow () |> Moment.isValid) |> toBe true);
         test
           "#isSame"
@@ -145,6 +156,9 @@ let () =
         test
           "#toDate"
           (fun () => expect (isJsDateValid (moment "2016-01-01" |> Moment.toDate)) |> toBe true);
+        test
+          "#toUnix"
+          (fun () => expect (moment "6 Mar 2017 21:22:23 GMT" |> Moment.toUnix) |> toBe 1488835343);
         test
           "#get"
           (fun () => expect (moment "2017-01-02 03:04:05.678" |> Moment.get `day) |> toBe 1);
