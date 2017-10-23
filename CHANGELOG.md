@@ -1,5 +1,32 @@
 # Change Log
 
+## [v0.1.7](https://github.com/reasonml-community/bs-moment/tree/v0.1.7) (2017-10-23)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.6...v0.1.7)
+
+**Merged pull requests:**
+
+- Add momentWithDate to namespace [\#16](https://github.com/reasonml-community/bs-moment/pull/16) ([jsiebern](https://github.com/jsiebern))
+
+## [v0.1.6](https://github.com/reasonml-community/bs-moment/tree/v0.1.6) (2017-10-22)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.5...v0.1.6)
+
+**Merged pull requests:**
+
+- Add node 8 in travis [\#15](https://github.com/reasonml-community/bs-moment/pull/15) ([Jimexist](https://github.com/Jimexist))
+- Add unix methods [\#14](https://github.com/reasonml-community/bs-moment/pull/14) ([jsiebern](https://github.com/jsiebern))
+
+## [v0.1.5](https://github.com/reasonml-community/bs-moment/tree/v0.1.5) (2017-10-21)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.4...v0.1.5)
+
+**Closed issues:**
+
+- integration with moment-timezone [\#11](https://github.com/reasonml-community/bs-moment/issues/11)
+
+**Merged pull requests:**
+
+- Add toDate method to Moment Module [\#13](https://github.com/reasonml-community/bs-moment/pull/13) ([jsiebern](https://github.com/jsiebern))
+- fix typo [\#12](https://github.com/reasonml-community/bs-moment/pull/12) ([airamrguez](https://github.com/airamrguez))
+
 ## [v0.1.4](https://github.com/reasonml-community/bs-moment/tree/v0.1.4) (2017-09-16)
 [Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.3...v0.1.4)
 
