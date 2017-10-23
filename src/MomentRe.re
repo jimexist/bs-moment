@@ -127,6 +127,8 @@ external momentDefaultFormat : string => Moment.t = "moment" [@@bs.module];
 
 external momentWithFormat : string => string => Moment.t = "moment" [@@bs.module];
 
+external momentWithDate : Js.Date.t => Moment.t = "moment" [@@bs.module];
+
 external momentWithFormats : string => list string => Moment.t = "moment" [@@bs.module];
 
 external momentWithTimestampMS : float => Moment.t = "moment" [@@bs.module];
