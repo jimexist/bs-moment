@@ -12,5 +12,6 @@
   ],
   "bs-dev-dependencies": [
     "bs-jest"
-  ]
+  ],
+  "refmt": 3
 }

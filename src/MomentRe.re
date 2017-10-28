@@ -1,25 +1,28 @@
 /* duration */
 module Duration = {
   type t;
-  external humanize : t => string = "" [@@bs.send];
-  external milliseconds : t => int = "" [@@bs.send];
-  external asMilliseconds : t => float = "" [@@bs.send];
-  external seconds : t => int = "" [@@bs.send];
-  external asSeconds : t => float = "" [@@bs.send];
-  external minutes : t => int = "" [@@bs.send];
-  external asMinutes : t => float = "" [@@bs.send];
-  external hours : t => int = "" [@@bs.send];
-  external asHours : t => float = "" [@@bs.send];
-  external days : t => int = "" [@@bs.send];
-  external asDays : t => float = "" [@@bs.send];
-  external weeks : t => int = "" [@@bs.send];
-  external asWeeks : t => float = "" [@@bs.send];
-  external months : t => int = "" [@@bs.send];
-  external asMonths : t => float = "" [@@bs.send];
-  external years : t => int = "" [@@bs.send];
-  external asYears : t => float = "" [@@bs.send];
-  external toJSON : t => string = "" [@@bs.send];
+  [@bs.send] external humanize : t => string = "";
+  [@bs.send] external milliseconds : t => int = "";
+  [@bs.send] external asMilliseconds : t => float = "";
+  [@bs.send] external seconds : t => int = "";
+  [@bs.send] external asSeconds : t => float = "";
+  [@bs.send] external minutes : t => int = "";
+  [@bs.send] external asMinutes : t => float = "";
+  [@bs.send] external hours : t => int = "";
+  [@bs.send] external asHours : t => float = "";
+  [@bs.send] external days : t => int = "";
+  [@bs.send] external asDays : t => float = "";
+  [@bs.send] external weeks : t => int = "";
+  [@bs.send] external asWeeks : t => float = "";
+  [@bs.send] external months : t => int = "";
+  [@bs.send] external asMonths : t => float = "";
+  [@bs.send] external years : t => int = "";
+  [@bs.send] external asYears : t => float = "";
+  [@bs.send] external toJSON : t => string = "";
+  [@bs.send.pipe : t]
   external asUnitOfTime :
+    (
+    [@bs.string]
     [
       | `years
       | `quarters
@@ -31,122 +34,157 @@ module Duration = {
       | `seconds
       | `milliseconds
     ]
-    [@bs.string] =>
+    ) =>
     float =
-    "as" [@@bs.send.pipe : t];
+    "as";
 };
 
+[@bs.module "moment"]
 external duration :
-  int =>
-  [ | `years | `quarters | `months | `weeks | `days | `hours | `minutes | `seconds | `milliseconds]
-  [@bs.string] =>
+  (
+    int,
+    [@bs.string]
+    [
+      | `years
+      | `quarters
+      | `months
+      | `weeks
+      | `days
+      | `hours
+      | `minutes
+      | `seconds
+      | `milliseconds
+    ]
+  ) =>
   Duration.t =
-  "" [@@bs.module "moment"];
+  "";
 
-external durationMillis : int => Duration.t = "duration" [@@bs.module "moment"];
+[@bs.module "moment"] external durationMillis : int => Duration.t = "duration";
 
-external durationFormat : string => Duration.t = "duration" [@@bs.module "moment"];
+[@bs.module "moment"] external durationFormat : string => Duration.t = "duration";
 
 module Moment = {
   type t;
-  external clone : t = "" [@@bs.send.pipe : t];
-  external mutableAdd : t => Duration.t => unit = "add" [@@bs.send];
-  let add ::duration moment => {
-    let clone = clone moment;
-    mutableAdd clone duration;
+  [@bs.send.pipe : t] external clone : t = "";
+  [@bs.send] external mutableAdd : (t, Duration.t) => unit = "add";
+  let add = (~duration, moment) => {
+    let clone = clone(moment);
+    mutableAdd(clone, duration);
     clone
   };
-  external mutableSubtract : t => Duration.t => unit = "subtract" [@@bs.send];
-  let subtract ::duration moment => {
-    let clone = clone moment;
-    mutableSubtract clone duration;
+  [@bs.send] external mutableSubtract : (t, Duration.t) => unit = "subtract";
+  let subtract = (~duration, moment) => {
+    let clone = clone(moment);
+    mutableSubtract(clone, duration);
     clone
   };
+  [@bs.send]
   external mutableStartOf :
-    t =>
-    [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
-    [@bs.string] =>
+    (
+      t,
+      [@bs.string]
+      [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+    ) =>
     unit =
-    "startOf" [@@bs.send];
-  let startOf timeUnit moment => {
-    let clone = clone moment;
-    mutableStartOf clone timeUnit;
+    "startOf";
+  let startOf = (timeUnit, moment) => {
+    let clone = clone(moment);
+    mutableStartOf(clone, timeUnit);
     clone
   };
+  [@bs.send]
   external mutableEndOf :
-    t =>
-    [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
-    [@bs.string] =>
+    (
+      t,
+      [@bs.string]
+      [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+    ) =>
     unit =
-    "endOf" [@@bs.send];
-  let endOf timeUnit moment => {
-    let clone = clone moment;
-    mutableEndOf clone timeUnit;
+    "endOf";
+  let endOf = (timeUnit, moment) => {
+    let clone = clone(moment);
+    mutableEndOf(clone, timeUnit);
     clone
   };
+  [@bs.send.pipe : t]
   external get :
+    (
+    [@bs.string]
     [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
-    [@bs.string] =>
+    ) =>
     int =
-    "" [@@bs.send.pipe : t];
-  external millisecond : int = "" [@@bs.send.pipe : t];
-  external second : int = "" [@@bs.send.pipe : t];
-  external minute : int = "" [@@bs.send.pipe : t];
-  external hour : int = "" [@@bs.send.pipe : t];
-  external day : int = "" [@@bs.send.pipe : t];
-  external week : int = "" [@@bs.send.pipe : t];
-  external month : int = "" [@@bs.send.pipe : t];
-  external year : int = "" [@@bs.send.pipe : t];
-  external isValid : t => bool = "" [@@bs.send];
-  external isBefore : t => t => bool = "" [@@bs.send];
-  external isAfter : t => t => bool = "" [@@bs.send];
-  external isSame : t => t => bool = "" [@@bs.send];
-  external isSameOrBefore : t => t => bool = "" [@@bs.send];
-  external isSameOrAfter : t => t => bool = "" [@@bs.send];
-  external isBetween : t => t => t => bool = "" [@@bs.send];
-  external isDST : t => bool = "" [@@bs.send];
-  external isLeapYear : t => bool = "" [@@bs.send];
+    "";
+  [@bs.send.pipe : t] external millisecond : int = "";
+  [@bs.send.pipe : t] external second : int = "";
+  [@bs.send.pipe : t] external minute : int = "";
+  [@bs.send.pipe : t] external hour : int = "";
+  [@bs.send.pipe : t] external day : int = "";
+  [@bs.send.pipe : t] external week : int = "";
+  [@bs.send.pipe : t] external month : int = "";
+  [@bs.send.pipe : t] external year : int = "";
+  [@bs.send] external isValid : t => bool = "";
+  [@bs.send] external isBefore : (t, t) => bool = "";
+  [@bs.send] external isAfter : (t, t) => bool = "";
+  [@bs.send] external isSame : (t, t) => bool = "";
+  [@bs.send] external isSameOrBefore : (t, t) => bool = "";
+  [@bs.send] external isSameOrAfter : (t, t) => bool = "";
+  [@bs.send] external isBetween : (t, t, t) => bool = "";
+  [@bs.send] external isDST : t => bool = "";
+  [@bs.send] external isLeapYear : t => bool = "";
   /* display */
-  external format : string => string = "" [@@bs.send.pipe : t];
-  external defaultFormat : string = "format" [@@bs.send.pipe : t];
-  external fromNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
-  external fromMoment : t => other::t => format::option string => string = "from" [@@bs.send];
-  external toNow : t => withoutSuffix::option bool => string = "" [@@bs.send];
-  external toMoment : t => other::t => format::string => string = "to" [@@bs.send];
-  external valueOf : t => float = "" [@@bs.send];
-  external daysInMonth : t => int = "" [@@bs.send];
-  external toJSON : t => string = "" [@@bs.send];
-  external toDate : t => Js.Date.t = "" [@@bs.send];
-  external toUnix : t => int = "unix" [@@bs.send];
+  [@bs.send.pipe : t] external format : string => string = "";
+  [@bs.send.pipe : t] external defaultFormat : string = "format";
+  [@bs.send] external fromNow : (t, ~withoutSuffix: option(bool)) => string = "";
+  [@bs.send] external fromMoment : (t, ~other: t, ~format: option(string)) => string = "from";
+  [@bs.send] external toNow : (t, ~withoutSuffix: option(bool)) => string = "";
+  [@bs.send] external toMoment : (t, ~other: t, ~format: string) => string = "to";
+  [@bs.send] external valueOf : t => float = "";
+  [@bs.send] external daysInMonth : t => int = "";
+  [@bs.send] external toJSON : t => string = "";
+  [@bs.send] external toDate : t => Js.Date.t = "";
+  [@bs.send] external toUnix : t => int = "unix";
 };
 
 /* parse */
-external momentNow : unit => Moment.t = "moment" [@@bs.module];
+[@bs.module] external momentNow : unit => Moment.t = "moment";
 
-external momentDefaultFormat : string => Moment.t = "moment" [@@bs.module];
+[@bs.module] external momentDefaultFormat : string => Moment.t = "moment";
 
-external momentWithFormat : string => string => Moment.t = "moment" [@@bs.module];
+[@bs.module] external momentWithFormat : (string, string) => Moment.t = "moment";
 
-external momentWithDate : Js.Date.t => Moment.t = "moment" [@@bs.module];
+[@bs.module] external momentWithDate : Js.Date.t => Moment.t = "moment";
 
-external momentWithFormats : string => list string => Moment.t = "moment" [@@bs.module];
+[@bs.module] external momentWithFormats : (string, list(string)) => Moment.t = "moment";
 
-external momentWithTimestampMS : float => Moment.t = "moment" [@@bs.module];
+[@bs.module] external momentWithTimestampMS : float => Moment.t = "moment";
 
-external momentWithComponents : list int => Moment.t = "moment" [@@bs.module];
+[@bs.module] external momentWithComponents : list(int) => Moment.t = "moment";
 
-let momentWithUnix (timestamp: int) => momentWithTimestampMS(float_of_int timestamp *. 1000.0);
+let momentWithUnix = (timestamp: int) => momentWithTimestampMS(float_of_int(timestamp) *. 1000.0);
 
+[@bs.send]
 external diff :
-  Moment.t =>
-  Moment.t =>
-  [ | `years | `quarters | `months | `weeks | `days | `hours | `minutes | `seconds | `milliseconds]
-  [@bs.string] =>
+  (
+    Moment.t,
+    Moment.t,
+    [@bs.string]
+    [
+      | `years
+      | `quarters
+      | `months
+      | `weeks
+      | `days
+      | `hours
+      | `minutes
+      | `seconds
+      | `milliseconds
+    ]
+  ) =>
   float =
-  "" [@@bs.send];
+  "";
 
-let moment ::format=? value =>
+let moment = (~format=?, value) =>
   switch format {
-  | Some f => momentWithFormats value f
-  | None => momentDefaultFormat value
+  | Some(f) => momentWithFormats(value, f)
+  | None => momentDefaultFormat(value)
   };
