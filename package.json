@@ -6,6 +6,13 @@
   "repository": "git@github.com:BuckleTypes/bs-moment.git",
   "author": "Jiayu Liu <jimexist@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "reason",
+    "bucklescript",
+    "moment",
+    "date",
+    "time"
+  ],
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
