@@ -133,6 +133,16 @@ let () =
             expect(moment("2016-01-01") |> Moment.defaultFormat) |> toContainString("2016-01-01")
         );
         test(
+          "#utc",
+          () =>
+            expect(momentNow() |> MomentRe.Moment.utc("2018-01-22") |> Moment.isValid) |> toBe(true)
+        );
+        test (
+          "#locale",
+          () =>
+            expect(moment("2016-01-01 00:00:00Z") |> Moment.locale("is_IS") |> Moment.format("LT")) |> toBe("0:00")
+        );
+        test(
           "#valueOf", /* TODO: float? */
           () =>
             expect(moment("2016-01-01 00:00:00Z") |> Moment.valueOf) |> toBeCloseTo(1451606400000.)
