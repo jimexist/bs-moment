@@ -6,13 +6,7 @@
   "repository": "git@github.com:BuckleTypes/bs-moment.git",
   "author": "Jiayu Liu <jimexist@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "reason",
-    "bucklescript",
-    "moment",
-    "date",
-    "time"
-  ],
+  "keywords": ["reason", "bucklescript", "moment", "date", "time"],
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
@@ -20,6 +14,9 @@
     "pretest": "yarn run build",
     "test": "jest",
     "prepublish": "yarn run clean && yarn run build"
+  },
+  "peerDependencies": {
+    "moment": "^2.20.1"
   },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.3.2",
