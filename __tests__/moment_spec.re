@@ -76,6 +76,34 @@ let () =
             )
             |> toBe(true)
         );
+        test(
+          "#mutableSetHour",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 00:25:05.000"),
+                {
+                  let original = moment("2017-01-01 02:25:05.000");
+                  Moment.mutableSetHour(original, 0);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setHour",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 00:25:05.000"),
+                moment("2017-01-01 06:25:05.000")
+                |> Moment.setHour(2)
+                |> Moment.setHour(0)
+              )
+            )
+            |> toBe(true)
+        );
         test("#isValid", () => expect(moment("2017-01-01") |> Moment.isValid) |> toBe(true));
         test("not #isValid", () => expect(moment("") |> Moment.isValid) |> toBe(false));
         test("#isDST", () => expect(moment("2016-01-01T00:00:00") |> Moment.isDST) |> toBe(false));
