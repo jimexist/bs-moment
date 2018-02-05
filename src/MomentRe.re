@@ -106,6 +106,12 @@ module Moment = {
     mutableEndOf(clone, timeUnit);
     clone
   };
+  [@bs.send] external mutableSetDate : (t, int) => unit = "date";
+  let setDate = (days, moment) => {
+    let clone = clone(moment);
+    mutableSetDate(clone, days);
+    clone
+  };
   [@bs.send.pipe : t]
   external get :
     (
@@ -122,6 +128,7 @@ module Moment = {
   [@bs.send.pipe : t] external week : int = "";
   [@bs.send.pipe : t] external month : int = "";
   [@bs.send.pipe : t] external year : int = "";
+  [@bs.send.pipe : t] external weekday : int = "";
   [@bs.send] external isValid : t => bool = "";
   [@bs.send] external isBefore : (t, t) => bool = "";
   [@bs.send] external isAfter : (t, t) => bool = "";
