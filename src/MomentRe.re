@@ -112,6 +112,12 @@ module Moment = {
     mutableSetDate(clone, days);
     clone
   };
+  [@bs.send] external mutableSetHour : (t, int) => unit = "hour";
+  let setHour = (hours, moment) => {
+    let clone = clone(moment);
+    mutableSetHour(clone, hours);
+    clone
+  };
   [@bs.send.pipe : t]
   external get :
     (
