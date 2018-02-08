@@ -1,5 +1,39 @@
 # Change Log
 
+## [v0.2.3](https://github.com/reasonml-community/bs-moment/tree/v0.2.3) (2018-02-08)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.2.2...v0.2.3)
+
+## [v0.2.2](https://github.com/reasonml-community/bs-moment/tree/v0.2.2) (2018-02-08)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.2.1...v0.2.2)
+
+**Merged pull requests:**
+
+- Feature/add setHour and setDate and weekday bind [\#20](https://github.com/reasonml-community/bs-moment/pull/20) ([grsabreu](https://github.com/grsabreu))
+
+## [v0.2.1](https://github.com/reasonml-community/bs-moment/tree/v0.2.1) (2018-01-18)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.2.0...v0.2.1)
+
+**Closed issues:**
+
+- Add moment.js to peerDependencies [\#18](https://github.com/reasonml-community/bs-moment/issues/18)
+
+## [v0.2.0](https://github.com/reasonml-community/bs-moment/tree/v0.2.0) (2018-01-18)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.9...v0.2.0)
+
+## [v0.1.9](https://github.com/reasonml-community/bs-moment/tree/v0.1.9) (2018-01-18)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.8...v0.1.9)
+
+**Merged pull requests:**
+
+- Add utc and locale  [\#19](https://github.com/reasonml-community/bs-moment/pull/19) ([laufeyrut](https://github.com/laufeyrut))
+
+## [v0.1.8](https://github.com/reasonml-community/bs-moment/tree/v0.1.8) (2017-10-31)
+[Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.7...v0.1.8)
+
+**Merged pull requests:**
+
+- 2to3 [\#17](https://github.com/reasonml-community/bs-moment/pull/17) ([Jimexist](https://github.com/Jimexist))
+
 ## [v0.1.7](https://github.com/reasonml-community/bs-moment/tree/v0.1.7) (2017-10-23)
 [Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.1.6...v0.1.7)
 
