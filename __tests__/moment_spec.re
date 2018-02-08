@@ -48,6 +48,62 @@ let () =
             )
             |> toBe(true)
         );
+        test(
+          "#mutableSetDate",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-04"),
+                {
+                  let original = moment("2017-01-01");
+                  Moment.mutableSetDate(original, 4);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setDate",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-04"),
+                moment("2017-01-01")
+                |> Moment.setDate(2)
+                |> Moment.setDate(4)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetHour",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 00:25:05.000"),
+                {
+                  let original = moment("2017-01-01 02:25:05.000");
+                  Moment.mutableSetHour(original, 0);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setHour",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 00:25:05.000"),
+                moment("2017-01-01 06:25:05.000")
+                |> Moment.setHour(2)
+                |> Moment.setHour(0)
+              )
+            )
+            |> toBe(true)
+        );
         test("#isValid", () => expect(moment("2017-01-01") |> Moment.isValid) |> toBe(true));
         test("not #isValid", () => expect(moment("") |> Moment.isValid) |> toBe(false));
         test("#isDST", () => expect(moment("2016-01-01T00:00:00") |> Moment.isDST) |> toBe(false));
@@ -175,7 +231,8 @@ let () =
         test("#day", () => expect(moment("2017-01-02 03:04:05.678") |> Moment.day) |> toBe(1));
         test("#week", () => expect(moment("2017-01-02 03:04:05.678") |> Moment.week) |> toBe(1));
         test("#month", () => expect(moment("2017-01-02 03:04:05.678") |> Moment.month) |> toBe(0));
-        test("#year", () => expect(moment("2017-01-02 03:04:05.678") |> Moment.year) |> toBe(2017))
+        test("#year", () => expect(moment("2017-01-02 03:04:05.678") |> Moment.year) |> toBe(2017));
+        test("#weekday", () => expect(moment("2017-01-02 03:04:05.678") |> Moment.weekday) |> toBe(1));
       }
     )
   );
