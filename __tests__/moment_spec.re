@@ -193,6 +193,10 @@ let () =
           () =>
             expect(momentNow() |> MomentRe.Moment.utc("2018-01-22") |> Moment.isValid) |> toBe(true)
         );
+        test(
+          "#defaultUtc",
+          () => expect(momentNow() |> MomentRe.Moment.defaultUtc |> Moment.isValid) |> toBe(true)
+        );
         test (
           "#locale",
           () =>
