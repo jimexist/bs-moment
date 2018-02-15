@@ -1,6 +1,6 @@
 {
   "name": "bs-moment",
-  "version": "0.1.8",
+  "version": "0.2.3",
   "description": "BuckleScript bindings for Moment.js",
   "main": "lib/js/src/MomentRe.js",
   "repository": "git@github.com:BuckleTypes/bs-moment.git",
@@ -21,11 +21,14 @@
     "test": "jest",
     "prepublish": "yarn run clean && yarn run build"
   },
+  "peerDependencies": {
+    "moment": "^2.20.1"
+  },
   "devDependencies": {
-    "bs-jest": "^0.1.0",
-    "bs-platform": "^2.0.0",
-    "husky": "^0.13.3",
-    "jest": "^19.0.2",
-    "moment": "^2.18.1"
+    "@glennsl/bs-jest": "^0.3.2",
+    "bs-platform": "^2.1.0",
+    "husky": "^0.14.3",
+    "jest": "^22.1.2",
+    "moment": "^2.20.1"
   }
 }

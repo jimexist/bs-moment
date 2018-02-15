@@ -3,15 +3,13 @@
   "bsc-flags": ["-bs-super-errors"],
   "sources": [
     {
-      "dir": "src",
+      "dir": "src"
     },
     {
       "dir": "__tests__",
       "type": "dev"
     }
   ],
-  "bs-dev-dependencies": [
-    "bs-jest"
-  ],
+  "bs-dev-dependencies": ["@glennsl/bs-jest"],
   "refmt": 3
 }
