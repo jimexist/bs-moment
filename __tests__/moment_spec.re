@@ -21,6 +21,34 @@ let () =
           () => expect(moment("2017-01-01") |> Moment.clone |> Moment.isValid) |> toBe(true)
         );
         test(
+          "#mutableSubtract",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2016-01-01"),
+                {
+                  let original = moment("2017-01-01");
+                  Moment.mutableSubtract(original, duration(1, `years));
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#subtract",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01"),
+                moment("2017-01-04")
+                |> Moment.subtract(~duration=duration(1, `days))
+                |> Moment.subtract(~duration=duration(2, `days))
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableAdd",
           () =>
             expect(
