@@ -136,6 +136,12 @@ module Moment = {
     mutableSetMillisecond(clone, milliseconds);
     clone
   };
+  [@bs.send] external mutableSetSecond : (t, int) => unit = "second";
+  let setSecond = (milliseconds, moment) => {
+    let clone = clone(moment);
+    mutableSetSecond(clone, milliseconds);
+    clone
+  };
   [@bs.send.pipe : t]
   external get :
     (
