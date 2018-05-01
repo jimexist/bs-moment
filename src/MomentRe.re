@@ -190,6 +190,18 @@ module Moment = {
     mutableSetYear(clone, year);
     clone
   };
+  [@bs.send] external mutableSetWeekYear : (t, int) => unit = "weekYear";
+  let setWeekYear = (weekYear, moment) => {
+    let clone = clone(moment);
+    mutableSetWeekYear(clone, weekYear);
+    clone
+  };
+  [@bs.send] external mutableSetIsoWeekYear : (t, int) => unit = "isoWeekYear";
+  let setIsoWeekYear = (isoWeekYear, moment) => {
+    let clone = clone(moment);
+    mutableSetWeekYear(clone, isoWeekYear);
+    clone
+  };
   [@bs.send.pipe : t]
   external get :
     (
