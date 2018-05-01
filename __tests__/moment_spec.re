@@ -245,6 +245,62 @@ let () =
             |> toBe(true)
         );
         test(
+          "#mutableSetWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                {
+                  let original = moment("2018-05-05");
+                  Moment.mutableSetWeekday(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                moment("2018-05-05")
+                |> Moment.setWeekday(3)
+                |> Moment.setWeekday(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetIsoWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                {
+                  let original = moment("2018-05-05");
+                  Moment.mutableSetIsoWeekday(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setIsoWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                moment("2018-05-05")
+                |> Moment.setIsoWeekday(3)
+                |> Moment.setIsoWeekday(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableSetMonth",
           () =>
             expect(
