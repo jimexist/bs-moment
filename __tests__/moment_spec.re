@@ -217,6 +217,34 @@ let () =
             |> toBe(true)
         );
         test(
+          "#mutableSetDay",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                {
+                  let original = moment("2018-05-05");
+                  Moment.mutableSetDay(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setDay",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                moment("2018-05-05")
+                |> Moment.setDay(3)
+                |> Moment.setDay(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableSetMonth",
           () =>
             expect(

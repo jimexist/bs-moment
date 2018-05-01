@@ -107,45 +107,51 @@ module Moment = {
     clone
   };
   [@bs.send] external mutableSetMillisecond : (t, int) => unit = "millisecond";
-  let setMillisecond = (milliseconds, moment) => {
+  let setMillisecond = (millisecond, moment) => {
     let clone = clone(moment);
-    mutableSetMillisecond(clone, milliseconds);
+    mutableSetMillisecond(clone, millisecond);
     clone
   };
   [@bs.send] external mutableSetSecond : (t, int) => unit = "second";
-  let setSecond = (seconds, moment) => {
+  let setSecond = (second, moment) => {
     let clone = clone(moment);
-    mutableSetSecond(clone, seconds);
+    mutableSetSecond(clone, second);
     clone
   };
   [@bs.send] external mutableSetMinute : (t, int) => unit = "minute";
-  let setMinute = (minutes, moment) => {
+  let setMinute = (minute, moment) => {
     let clone = clone(moment);
-    mutableSetMinute(clone, minutes);
+    mutableSetMinute(clone, minute);
     clone
   };
   [@bs.send] external mutableSetHour : (t, int) => unit = "hour";
-  let setHour = (hours, moment) => {
+  let setHour = (hour, moment) => {
     let clone = clone(moment);
-    mutableSetHour(clone, hours);
+    mutableSetHour(clone, hour);
     clone
   };
   [@bs.send] external mutableSetDate : (t, int) => unit = "date";
-  let setDate = (days, moment) => {
+  let setDate = (date, moment) => {
     let clone = clone(moment);
-    mutableSetDate(clone, days);
+    mutableSetDate(clone, date);
+    clone
+  };
+  [@bs.send] external mutableSetDay : (t, int) => unit = "day";
+  let setDay = (day, moment) => {
+    let clone = clone(moment);
+    mutableSetDay(clone, day);
     clone
   };
   [@bs.send] external mutableSetMonth : (t, int) => unit = "month";
-  let setMonth = (months, moment) => {
+  let setMonth = (month, moment) => {
     let clone = clone(moment);
-    mutableSetMonth(clone, months);
+    mutableSetMonth(clone, month);
     clone
   };
   [@bs.send] external mutableSetYear : (t, int) => unit = "year";
-  let setYear = (years, moment) => {
+  let setYear = (year, moment) => {
     let clone = clone(moment);
-    mutableSetYear(clone, years);
+    mutableSetYear(clone, year);
     clone
   };
   [@bs.send.pipe : t]
