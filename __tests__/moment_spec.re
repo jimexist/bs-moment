@@ -413,6 +413,34 @@ let () =
             |> toBe(true)
         );
         test(
+          "#mutableSetQuarter",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2013-04-01T00:00:00.000"),
+                {
+                  let original = moment("2013-01-01T00:00:00.000");
+                  Moment.mutableSetQuarter(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setQuarter",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2013-04-01T00:00:00.000"),
+                moment("2013-01-01T00:00:00.000")
+                |> Moment.setQuarter(4)
+                |> Moment.setQuarter(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableSetYear",
           () =>
             expect(

@@ -178,6 +178,12 @@ module Moment = {
     mutableSetMonth(clone, month);
     clone
   };
+  [@bs.send] external mutableSetQuarter : (t, int) => unit = "quarter";
+  let setQuarter = (quarter, moment) => {
+    let clone = clone(moment);
+    mutableSetQuarter(clone, quarter);
+    clone
+  };
   [@bs.send] external mutableSetYear : (t, int) => unit = "year";
   let setYear = (year, moment) => {
     let clone = clone(moment);
