@@ -301,6 +301,34 @@ let () =
             |> toBe(true)
         );
         test(
+          "#mutableSetDayOfYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-01"),
+                {
+                  let original = moment("2018-01-05");
+                  Moment.mutableSetDayOfYear(original, 1);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setDayOfYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-01"),
+                moment("2018-01-05")
+                |> Moment.setDayOfYear(3)
+                |> Moment.setDayOfYear(1)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableSetMonth",
           () =>
             expect(

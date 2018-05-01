@@ -154,6 +154,12 @@ module Moment = {
     mutableSetIsoWeekday(clone, isoWeekday);
     clone
   };
+  [@bs.send] external mutableSetDayOfYear : (t, int) => unit = "dayOfYear";
+  let setDayOfYear = (dayOfYear, moment) => {
+    let clone = clone(moment);
+    mutableSetDayOfYear(clone, dayOfYear);
+    clone
+  };
   [@bs.send] external mutableSetMonth : (t, int) => unit = "month";
   let setMonth = (month, moment) => {
     let clone = clone(moment);
