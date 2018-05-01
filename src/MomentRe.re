@@ -130,6 +130,12 @@ module Moment = {
     mutableSetYear(clone, years);
     clone
   };
+  [@bs.send] external mutableSetMillisecond : (t, int) => unit = "millisecond";
+  let setMillisecond = (milliseconds, moment) => {
+    let clone = clone(moment);
+    mutableSetMillisecond(clone, milliseconds);
+    clone
+  };
   [@bs.send.pipe : t]
   external get :
     (
