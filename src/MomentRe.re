@@ -106,16 +106,34 @@ module Moment = {
     mutableEndOf(clone, timeUnit);
     clone
   };
-  [@bs.send] external mutableSetDate : (t, int) => unit = "date";
-  let setDate = (days, moment) => {
+  [@bs.send] external mutableSetMillisecond : (t, int) => unit = "millisecond";
+  let setMillisecond = (milliseconds, moment) => {
     let clone = clone(moment);
-    mutableSetDate(clone, days);
+    mutableSetMillisecond(clone, milliseconds);
+    clone
+  };
+  [@bs.send] external mutableSetSecond : (t, int) => unit = "second";
+  let setSecond = (seconds, moment) => {
+    let clone = clone(moment);
+    mutableSetSecond(clone, seconds);
+    clone
+  };
+  [@bs.send] external mutableSetMinute : (t, int) => unit = "minute";
+  let setMinute = (minutes, moment) => {
+    let clone = clone(moment);
+    mutableSetMinute(clone, minutes);
     clone
   };
   [@bs.send] external mutableSetHour : (t, int) => unit = "hour";
   let setHour = (hours, moment) => {
     let clone = clone(moment);
     mutableSetHour(clone, hours);
+    clone
+  };
+  [@bs.send] external mutableSetDate : (t, int) => unit = "date";
+  let setDate = (days, moment) => {
+    let clone = clone(moment);
+    mutableSetDate(clone, days);
     clone
   };
   [@bs.send] external mutableSetMonth : (t, int) => unit = "month";
@@ -128,18 +146,6 @@ module Moment = {
   let setYear = (years, moment) => {
     let clone = clone(moment);
     mutableSetYear(clone, years);
-    clone
-  };
-  [@bs.send] external mutableSetMillisecond : (t, int) => unit = "millisecond";
-  let setMillisecond = (milliseconds, moment) => {
-    let clone = clone(moment);
-    mutableSetMillisecond(clone, milliseconds);
-    clone
-  };
-  [@bs.send] external mutableSetSecond : (t, int) => unit = "second";
-  let setSecond = (milliseconds, moment) => {
-    let clone = clone(moment);
-    mutableSetSecond(clone, milliseconds);
     clone
   };
   [@bs.send.pipe : t]

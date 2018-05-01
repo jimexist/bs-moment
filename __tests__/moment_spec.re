@@ -77,14 +77,14 @@ let () =
             |> toBe(true)
         );
         test(
-          "#mutableSetDate",
+          "#mutableSetMillisecond",
           () =>
             expect(
               Moment.isSame(
-                moment("2017-01-04"),
+                moment("2017-01-01 02:25:05.100"),
                 {
-                  let original = moment("2017-01-01");
-                  Moment.mutableSetDate(original, 4);
+                  let original = moment("2017-01-01 02:25:05.000");
+                  Moment.mutableSetMillisecond(original, 100);
                   original
                 }
               )
@@ -92,14 +92,70 @@ let () =
             |> toBe(true)
         );
         test(
-          "#setDate",
+          "#setMillisecond",
           () =>
             expect(
               Moment.isSame(
-                moment("2017-01-04"),
-                moment("2017-01-01")
-                |> Moment.setDate(2)
-                |> Moment.setDate(4)
+                moment("2017-01-01 02:25:05.100"),
+                moment("2017-01-01 02:25:05.000")
+                |> Moment.setMillisecond(200)
+                |> Moment.setMillisecond(100)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetSecond",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                {
+                  let original = moment("2017-01-01 02:25:05.100");
+                  Moment.mutableSetSecond(original, 30);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setSecond",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                moment("2017-01-01 02:25:05.100")
+                |> Moment.setSecond(20)
+                |> Moment.setSecond(30)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetMinute",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                {
+                  let original = moment("2017-01-01 02:20:30.100");
+                  Moment.mutableSetMinute(original, 25);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setMinute",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                moment("2017-01-01 02:20:30.100")
+                |> Moment.setMinute(30)
+                |> Moment.setMinute(25)
               )
             )
             |> toBe(true)
@@ -128,6 +184,34 @@ let () =
                 moment("2017-01-01 06:25:05.000")
                 |> Moment.setHour(2)
                 |> Moment.setHour(0)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetDate",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-04"),
+                {
+                  let original = moment("2017-01-01");
+                  Moment.mutableSetDate(original, 4);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setDate",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-04"),
+                moment("2017-01-01")
+                |> Moment.setDate(2)
+                |> Moment.setDate(4)
               )
             )
             |> toBe(true)
@@ -184,62 +268,6 @@ let () =
                 moment("2017-01-01")
                 |> Moment.setYear(2018)
                 |> Moment.setYear(2019)
-              )
-            )
-            |> toBe(true)
-        );
-        test(
-          "#mutableSetMillisecond",
-          () =>
-            expect(
-              Moment.isSame(
-                moment("2017-01-01 02:25:05.100"),
-                {
-                  let original = moment("2017-01-01 02:25:05.000");
-                  Moment.mutableSetMillisecond(original, 100);
-                  original
-                }
-              )
-            )
-            |> toBe(true)
-        );
-        test(
-          "#setMillisecond",
-          () =>
-            expect(
-              Moment.isSame(
-                moment("2017-01-01 02:25:05.100"),
-                moment("2017-01-01 02:25:05.000")
-                |> Moment.setMillisecond(200)
-                |> Moment.setMillisecond(100)
-              )
-            )
-            |> toBe(true)
-        );
-        test(
-          "#mutableSetSecond",
-          () =>
-            expect(
-              Moment.isSame(
-                moment("2017-01-01 02:25:30.100"),
-                {
-                  let original = moment("2017-01-01 02:25:05.100");
-                  Moment.mutableSetSecond(original, 30);
-                  original
-                }
-              )
-            )
-            |> toBe(true)
-        );
-        test(
-          "#setSecond",
-          () =>
-            expect(
-              Moment.isSame(
-                moment("2017-01-01 02:25:30.100"),
-                moment("2017-01-01 02:25:05.100")
-                |> Moment.setSecond(20)
-                |> Moment.setSecond(30)
               )
             )
             |> toBe(true)
