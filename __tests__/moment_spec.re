@@ -357,6 +357,34 @@ let () =
             |> toBe(true)
         );
         test(
+          "#mutableSetIsoWeek",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-17"),
+                {
+                  let original = moment("2018-01-03");
+                  Moment.mutableSetIsoWeek(original, 3);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setIsoWeek",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-17"),
+                moment("2018-01-03")
+                |> Moment.setIsoWeek(5)
+                |> Moment.setIsoWeek(3)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableSetMonth",
           () =>
             expect(
