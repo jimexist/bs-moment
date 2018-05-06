@@ -106,28 +106,100 @@ module Moment = {
     mutableEndOf(clone, timeUnit);
     clone
   };
-  [@bs.send] external mutableSetDate : (t, int) => unit = "date";
-  let setDate = (days, moment) => {
+  [@bs.send] external mutableSetMillisecond : (t, int) => unit = "millisecond";
+  let setMillisecond = (millisecond, moment) => {
     let clone = clone(moment);
-    mutableSetDate(clone, days);
+    mutableSetMillisecond(clone, millisecond);
+    clone
+  };
+  [@bs.send] external mutableSetSecond : (t, int) => unit = "second";
+  let setSecond = (second, moment) => {
+    let clone = clone(moment);
+    mutableSetSecond(clone, second);
+    clone
+  };
+  [@bs.send] external mutableSetMinute : (t, int) => unit = "minute";
+  let setMinute = (minute, moment) => {
+    let clone = clone(moment);
+    mutableSetMinute(clone, minute);
     clone
   };
   [@bs.send] external mutableSetHour : (t, int) => unit = "hour";
-  let setHour = (hours, moment) => {
+  let setHour = (hour, moment) => {
     let clone = clone(moment);
-    mutableSetHour(clone, hours);
+    mutableSetHour(clone, hour);
+    clone
+  };
+  [@bs.send] external mutableSetDate : (t, int) => unit = "date";
+  let setDate = (date, moment) => {
+    let clone = clone(moment);
+    mutableSetDate(clone, date);
+    clone
+  };
+  [@bs.send] external mutableSetDay : (t, int) => unit = "day";
+  let setDay = (day, moment) => {
+    let clone = clone(moment);
+    mutableSetDay(clone, day);
+    clone
+  };
+  [@bs.send] external mutableSetWeekday : (t, int) => unit = "weekday";
+  let setWeekday = (weekday, moment) => {
+    let clone = clone(moment);
+    mutableSetWeekday(clone, weekday);
+    clone
+  };
+  [@bs.send] external mutableSetIsoWeekday : (t, int) => unit = "isoWeekday";
+  let setIsoWeekday = (isoWeekday, moment) => {
+    let clone = clone(moment);
+    mutableSetIsoWeekday(clone, isoWeekday);
+    clone
+  };
+  [@bs.send] external mutableSetDayOfYear : (t, int) => unit = "dayOfYear";
+  let setDayOfYear = (dayOfYear, moment) => {
+    let clone = clone(moment);
+    mutableSetDayOfYear(clone, dayOfYear);
+    clone
+  };
+  [@bs.send] external mutableSetWeek : (t, int) => unit = "week";
+  let setWeek = (week, moment) => {
+    let clone = clone(moment);
+    mutableSetWeek(clone, week);
+    clone
+  };
+  [@bs.send] external mutableSetIsoWeek : (t, int) => unit = "isoWeek";
+  let setIsoWeek = (isoWeek, moment) => {
+    let clone = clone(moment);
+    mutableSetIsoWeek(clone, isoWeek);
     clone
   };
   [@bs.send] external mutableSetMonth : (t, int) => unit = "month";
-  let setMonth = (months, moment) => {
+  let setMonth = (month, moment) => {
     let clone = clone(moment);
-    mutableSetMonth(clone, months);
+    mutableSetMonth(clone, month);
+    clone
+  };
+  [@bs.send] external mutableSetQuarter : (t, int) => unit = "quarter";
+  let setQuarter = (quarter, moment) => {
+    let clone = clone(moment);
+    mutableSetQuarter(clone, quarter);
     clone
   };
   [@bs.send] external mutableSetYear : (t, int) => unit = "year";
-  let setYear = (years, moment) => {
+  let setYear = (year, moment) => {
     let clone = clone(moment);
-    mutableSetYear(clone, years);
+    mutableSetYear(clone, year);
+    clone
+  };
+  [@bs.send] external mutableSetWeekYear : (t, int) => unit = "weekYear";
+  let setWeekYear = (weekYear, moment) => {
+    let clone = clone(moment);
+    mutableSetWeekYear(clone, weekYear);
+    clone
+  };
+  [@bs.send] external mutableSetIsoWeekYear : (t, int) => unit = "isoWeekYear";
+  let setIsoWeekYear = (isoWeekYear, moment) => {
+    let clone = clone(moment);
+    mutableSetWeekYear(clone, isoWeekYear);
     clone
   };
   [@bs.send.pipe : t]
