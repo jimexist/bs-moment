@@ -5,7 +5,7 @@ open MomentRe;
 let isJsDateValid: Js.Date.t => bool = [%bs.raw
   {|
   function(date) {
-    return (date instanceof Date && !isNaN(date.valueOf())) ? 1 : 0;
+    return (date instanceof Date && !isNaN(date.valueOf())) ? true : false;
   }
 |}
 ];
