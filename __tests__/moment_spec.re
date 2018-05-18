@@ -77,14 +77,14 @@ let () =
             |> toBe(true)
         );
         test(
-          "#mutableSetDate",
+          "#mutableSetMillisecond",
           () =>
             expect(
               Moment.isSame(
-                moment("2017-01-04"),
+                moment("2017-01-01 02:25:05.100"),
                 {
-                  let original = moment("2017-01-01");
-                  Moment.mutableSetDate(original, 4);
+                  let original = moment("2017-01-01 02:25:05.000");
+                  Moment.mutableSetMillisecond(original, 100);
                   original
                 }
               )
@@ -92,14 +92,70 @@ let () =
             |> toBe(true)
         );
         test(
-          "#setDate",
+          "#setMillisecond",
           () =>
             expect(
               Moment.isSame(
-                moment("2017-01-04"),
-                moment("2017-01-01")
-                |> Moment.setDate(2)
-                |> Moment.setDate(4)
+                moment("2017-01-01 02:25:05.100"),
+                moment("2017-01-01 02:25:05.000")
+                |> Moment.setMillisecond(200)
+                |> Moment.setMillisecond(100)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetSecond",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                {
+                  let original = moment("2017-01-01 02:25:05.100");
+                  Moment.mutableSetSecond(original, 30);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setSecond",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                moment("2017-01-01 02:25:05.100")
+                |> Moment.setSecond(20)
+                |> Moment.setSecond(30)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetMinute",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                {
+                  let original = moment("2017-01-01 02:20:30.100");
+                  Moment.mutableSetMinute(original, 25);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setMinute",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-01 02:25:30.100"),
+                moment("2017-01-01 02:20:30.100")
+                |> Moment.setMinute(30)
+                |> Moment.setMinute(25)
               )
             )
             |> toBe(true)
@@ -133,6 +189,202 @@ let () =
             |> toBe(true)
         );
         test(
+          "#mutableSetDate",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-04"),
+                {
+                  let original = moment("2017-01-01");
+                  Moment.mutableSetDate(original, 4);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setDate",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2017-01-04"),
+                moment("2017-01-01")
+                |> Moment.setDate(2)
+                |> Moment.setDate(4)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetDay",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                {
+                  let original = moment("2018-05-05");
+                  Moment.mutableSetDay(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setDay",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                moment("2018-05-05")
+                |> Moment.setDay(3)
+                |> Moment.setDay(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                {
+                  let original = moment("2018-05-05");
+                  Moment.mutableSetWeekday(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                moment("2018-05-05")
+                |> Moment.setWeekday(3)
+                |> Moment.setWeekday(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetIsoWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                {
+                  let original = moment("2018-05-05");
+                  Moment.mutableSetIsoWeekday(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setIsoWeekday",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-05-01"),
+                moment("2018-05-05")
+                |> Moment.setIsoWeekday(3)
+                |> Moment.setIsoWeekday(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetDayOfYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-01"),
+                {
+                  let original = moment("2018-01-05");
+                  Moment.mutableSetDayOfYear(original, 1);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setDayOfYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-01"),
+                moment("2018-01-05")
+                |> Moment.setDayOfYear(3)
+                |> Moment.setDayOfYear(1)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetWeek",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-17"),
+                {
+                  let original = moment("2018-01-03");
+                  Moment.mutableSetWeek(original, 3);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setWeek",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-17"),
+                moment("2018-01-03")
+                |> Moment.setWeek(5)
+                |> Moment.setWeek(3)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetIsoWeek",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-17"),
+                {
+                  let original = moment("2018-01-03");
+                  Moment.mutableSetIsoWeek(original, 3);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setIsoWeek",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-17"),
+                moment("2018-01-03")
+                |> Moment.setIsoWeek(5)
+                |> Moment.setIsoWeek(3)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableSetMonth",
           () =>
             expect(
@@ -161,6 +413,34 @@ let () =
             |> toBe(true)
         );
         test(
+          "#mutableSetQuarter",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2013-04-01T00:00:00.000"),
+                {
+                  let original = moment("2013-01-01T00:00:00.000");
+                  Moment.mutableSetQuarter(original, 2);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setQuarter",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2013-04-01T00:00:00.000"),
+                moment("2013-01-01T00:00:00.000")
+                |> Moment.setQuarter(4)
+                |> Moment.setQuarter(2)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
           "#mutableSetYear",
           () =>
             expect(
@@ -184,6 +464,62 @@ let () =
                 moment("2017-01-01")
                 |> Moment.setYear(2018)
                 |> Moment.setYear(2019)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetWeekYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-05"),
+                {
+                  let original = moment("2019-01-04");
+                  Moment.mutableSetWeekYear(original, 2018);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setWeekYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-05"),
+                moment("2019-01-04")
+                |> Moment.setWeekYear(2020)
+                |> Moment.setWeekYear(2018)
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#mutableSetIsoWeekYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-05"),
+                {
+                  let original = moment("2019-01-04");
+                  Moment.mutableSetIsoWeekYear(original, 2018);
+                  original
+                }
+              )
+            )
+            |> toBe(true)
+        );
+        test(
+          "#setIsoWeekYear",
+          () =>
+            expect(
+              Moment.isSame(
+                moment("2018-01-05"),
+                moment("2019-01-04")
+                |> Moment.setIsoWeekYear(2020)
+                |> Moment.setIsoWeekYear(2018)
               )
             )
             |> toBe(true)
