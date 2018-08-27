@@ -19,7 +19,7 @@ module Duration = {
   [@bs.send] external years : t => int = "";
   [@bs.send] external asYears : t => float = "";
   [@bs.send] external toJSON : t => string = "";
-  [@bs.send.pipe : t]
+  [@bs.send.pipe: t]
   external asUnitOfTime :
     (
     [@bs.string]
@@ -43,8 +43,7 @@ module Duration = {
 external duration :
   (
     int,
-    [@bs.string]
-    [
+    [@bs.string] [
       | `years
       | `quarters
       | `months
@@ -61,195 +60,234 @@ external duration :
 
 [@bs.module "moment"] external durationMillis : int => Duration.t = "duration";
 
-[@bs.module "moment"] external durationFormat : string => Duration.t = "duration";
+[@bs.module "moment"]
+external durationFormat : string => Duration.t = "duration";
 
 module Moment = {
   type t;
-  [@bs.send.pipe : t] external clone : t = "";
+
+  [@bs.send.pipe: t] external clone : t = "";
   [@bs.send] external mutableAdd : (t, Duration.t) => unit = "add";
   let add = (~duration, moment) => {
     let clone = clone(moment);
     mutableAdd(clone, duration);
-    clone
+    clone;
   };
   [@bs.send] external mutableSubtract : (t, Duration.t) => unit = "subtract";
   let subtract = (~duration, moment) => {
     let clone = clone(moment);
     mutableSubtract(clone, duration);
-    clone
+    clone;
   };
   [@bs.send]
   external mutableStartOf :
     (
       t,
-      [@bs.string]
-      [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+      [@bs.string] [
+        | `year
+        | `quarter
+        | `month
+        | `week
+        | `day
+        | `hour
+        | `minute
+        | `second
+        | `millisecond
+      ]
     ) =>
     unit =
     "startOf";
   let startOf = (timeUnit, moment) => {
     let clone = clone(moment);
     mutableStartOf(clone, timeUnit);
-    clone
+    clone;
   };
   [@bs.send]
   external mutableEndOf :
     (
       t,
-      [@bs.string]
-      [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+      [@bs.string] [
+        | `year
+        | `quarter
+        | `month
+        | `week
+        | `day
+        | `hour
+        | `minute
+        | `second
+        | `millisecond
+      ]
     ) =>
     unit =
     "endOf";
   let endOf = (timeUnit, moment) => {
     let clone = clone(moment);
     mutableEndOf(clone, timeUnit);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetMillisecond : (t, int) => unit = "millisecond";
   let setMillisecond = (millisecond, moment) => {
     let clone = clone(moment);
     mutableSetMillisecond(clone, millisecond);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetSecond : (t, int) => unit = "second";
   let setSecond = (second, moment) => {
     let clone = clone(moment);
     mutableSetSecond(clone, second);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetMinute : (t, int) => unit = "minute";
   let setMinute = (minute, moment) => {
     let clone = clone(moment);
     mutableSetMinute(clone, minute);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetHour : (t, int) => unit = "hour";
   let setHour = (hour, moment) => {
     let clone = clone(moment);
     mutableSetHour(clone, hour);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetDate : (t, int) => unit = "date";
   let setDate = (date, moment) => {
     let clone = clone(moment);
     mutableSetDate(clone, date);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetDay : (t, int) => unit = "day";
   let setDay = (day, moment) => {
     let clone = clone(moment);
     mutableSetDay(clone, day);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetWeekday : (t, int) => unit = "weekday";
   let setWeekday = (weekday, moment) => {
     let clone = clone(moment);
     mutableSetWeekday(clone, weekday);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetIsoWeekday : (t, int) => unit = "isoWeekday";
   let setIsoWeekday = (isoWeekday, moment) => {
     let clone = clone(moment);
     mutableSetIsoWeekday(clone, isoWeekday);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetDayOfYear : (t, int) => unit = "dayOfYear";
   let setDayOfYear = (dayOfYear, moment) => {
     let clone = clone(moment);
     mutableSetDayOfYear(clone, dayOfYear);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetWeek : (t, int) => unit = "week";
   let setWeek = (week, moment) => {
     let clone = clone(moment);
     mutableSetWeek(clone, week);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetIsoWeek : (t, int) => unit = "isoWeek";
   let setIsoWeek = (isoWeek, moment) => {
     let clone = clone(moment);
     mutableSetIsoWeek(clone, isoWeek);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetMonth : (t, int) => unit = "month";
   let setMonth = (month, moment) => {
     let clone = clone(moment);
     mutableSetMonth(clone, month);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetQuarter : (t, int) => unit = "quarter";
   let setQuarter = (quarter, moment) => {
     let clone = clone(moment);
     mutableSetQuarter(clone, quarter);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetYear : (t, int) => unit = "year";
   let setYear = (year, moment) => {
     let clone = clone(moment);
     mutableSetYear(clone, year);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetWeekYear : (t, int) => unit = "weekYear";
   let setWeekYear = (weekYear, moment) => {
     let clone = clone(moment);
     mutableSetWeekYear(clone, weekYear);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetIsoWeekYear : (t, int) => unit = "isoWeekYear";
   let setIsoWeekYear = (isoWeekYear, moment) => {
     let clone = clone(moment);
     mutableSetWeekYear(clone, isoWeekYear);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetMonth : (t, int) => unit = "month";
   let setMonth = (months, moment) => {
     let clone = clone(moment);
     mutableSetMonth(clone, months);
-    clone
+    clone;
   };
   [@bs.send] external mutableSetYear : (t, int) => unit = "year";
   let setYear = (years, moment) => {
     let clone = clone(moment);
     mutableSetYear(clone, years);
-    clone
+    clone;
   };
-  [@bs.send.pipe : t]
+  [@bs.send.pipe: t]
   external get :
     (
     [@bs.string]
-    [ | `year | `quarter | `month | `week | `day | `hour | `minute | `second | `millisecond]
+    [
+      | `year
+      | `quarter
+      | `month
+      | `week
+      | `day
+      | `hour
+      | `minute
+      | `second
+      | `millisecond
+    ]
     ) =>
     int =
     "";
-  [@bs.send.pipe : t] external millisecond : int = "";
-  [@bs.send.pipe : t] external second : int = "";
-  [@bs.send.pipe : t] external minute : int = "";
-  [@bs.send.pipe : t] external hour : int = "";
-  [@bs.send.pipe : t] external day : int = "";
-  [@bs.send.pipe : t] external week : int = "";
-  [@bs.send.pipe : t] external month : int = "";
-  [@bs.send.pipe : t] external year : int = "";
-  [@bs.send.pipe : t] external weekday : int = "";
+  [@bs.send.pipe: t] external millisecond : int = "";
+  [@bs.send.pipe: t] external second : int = "";
+  [@bs.send.pipe: t] external minute : int = "";
+  [@bs.send.pipe: t] external hour : int = "";
+  [@bs.send.pipe: t] external day : int = "";
+  [@bs.send.pipe: t] external week : int = "";
+  [@bs.send.pipe: t] external month : int = "";
+  [@bs.send.pipe: t] external year : int = "";
+  [@bs.send.pipe: t] external weekday : int = "";
   [@bs.send] external isValid : t => bool = "";
   [@bs.send] external isBefore : (t, t) => bool = "";
   [@bs.send] external isAfter : (t, t) => bool = "";
   [@bs.send] external isSame : (t, t) => bool = "";
+  [@bs.send]
+  external isSameWithGranularity :
+    (t, t, [@bs.string] [ | `year | `month | `day]) => bool =
+    "isSame";
   [@bs.send] external isSameOrBefore : (t, t) => bool = "";
   [@bs.send] external isSameOrAfter : (t, t) => bool = "";
   [@bs.send] external isBetween : (t, t, t) => bool = "";
   [@bs.send] external isDST : t => bool = "";
   [@bs.send] external isLeapYear : t => bool = "";
   /* display */
-  [@bs.send.pipe : t] external format : string => string = "";
-  [@bs.send.pipe : t] external defaultFormat : string = "format";
-  [@bs.send.pipe : t] external utc : string => t = "";
-  [@bs.send.pipe : t] external defaultUtc : t = "utc";
-  [@bs.send.pipe : t] external locale : string => t = "";
-  [@bs.send] external fromNow : (t, ~withoutSuffix: option(bool)) => string = "";
-  [@bs.send] external fromMoment : (t, ~other: t, ~format: option(string)) => string = "from";
-  [@bs.send] external toNow : (t, ~withoutSuffix: option(bool)) => string = "";
-  [@bs.send] external toMoment : (t, ~other: t, ~format: string) => string = "to";
+  [@bs.send.pipe: t] external format : string => string = "";
+  [@bs.send.pipe: t] external defaultFormat : string = "format";
+  [@bs.send.pipe: t] external utc : string => t = "";
+  [@bs.send.pipe: t] external defaultUtc : t = "utc";
+  [@bs.send.pipe: t] external locale : string => t = "";
+  [@bs.send]
+  external fromNow : (t, ~withoutSuffix: option(bool)) => string = "";
+  [@bs.send]
+  external fromMoment : (t, ~other: t, ~format: option(string)) => string =
+    "from";
+  [@bs.send]
+  external toNow : (t, ~withoutSuffix: option(bool)) => string = "";
+  [@bs.send]
+  external toMoment : (t, ~other: t, ~format: string) => string = "to";
   [@bs.send] external valueOf : t => float = "";
   [@bs.send] external daysInMonth : t => int = "";
   [@bs.send] external toJSON : t => string = "";
@@ -262,25 +300,27 @@ module Moment = {
 
 [@bs.module] external momentDefaultFormat : string => Moment.t = "moment";
 
-[@bs.module] external momentWithFormat : (string, string) => Moment.t = "moment";
+[@bs.module]
+external momentWithFormat : (string, string) => Moment.t = "moment";
 
 [@bs.module] external momentWithDate : Js.Date.t => Moment.t = "moment";
 
-[@bs.module] external momentWithFormats : (string, list(string)) => Moment.t = "moment";
+[@bs.module]
+external momentWithFormats : (string, list(string)) => Moment.t = "moment";
 
 [@bs.module] external momentWithTimestampMS : float => Moment.t = "moment";
 
 [@bs.module] external momentWithComponents : list(int) => Moment.t = "moment";
 
-let momentWithUnix = (timestamp: int) => momentWithTimestampMS(float_of_int(timestamp) *. 1000.0);
+let momentWithUnix = (timestamp: int) =>
+  momentWithTimestampMS(float_of_int(timestamp) *. 1000.0);
 
 [@bs.send]
 external diff :
   (
     Moment.t,
     Moment.t,
-    [@bs.string]
-    [
+    [@bs.string] [
       | `years
       | `quarters
       | `months
@@ -296,7 +336,7 @@ external diff :
   "";
 
 let moment = (~format=?, value) =>
-  switch format {
+  switch (format) {
   | Some(f) => momentWithFormats(value, f)
   | None => momentDefaultFormat(value)
   };
