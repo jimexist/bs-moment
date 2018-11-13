@@ -231,6 +231,7 @@ module Moment = {
       | `month
       | `week
       | `day
+      | `date
       | `hour
       | `minute
       | `second
