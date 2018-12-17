@@ -641,6 +641,10 @@ let () =
         test("#day", () =>
           expect(moment("2017-01-02 03:04:05.678") |> Moment.day) |> toBe(1)
         );
+        test("#date", () =>
+          expect(moment("2017-01-02 03:04:05.678") |> Moment.date)
+          |> toBe(2)
+        );
         test("#week", () =>
           expect(moment("2017-01-02 03:04:05.678") |> Moment.week)
           |> toBe(1)
