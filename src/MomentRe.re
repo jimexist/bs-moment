@@ -245,6 +245,7 @@ module Moment = {
   [@bs.send.pipe: t] external minute: int = "";
   [@bs.send.pipe: t] external hour: int = "";
   [@bs.send.pipe: t] external day: int = "";
+  [@bs.send.pipe: t] external date: int = "";
   [@bs.send.pipe: t] external week: int = "";
   [@bs.send.pipe: t] external month: int = "";
   [@bs.send.pipe: t] external year: int = "";
