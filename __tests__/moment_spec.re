@@ -557,9 +557,9 @@ let () =
           )
           |> toBe(true)
         );
-        test("#isAfterWithDuration", () => {
+        test("#isAfterWithGranularity", () => {
           expect(
-            Moment.isAfterWithDuration(
+            Moment.isAfterWithGranularity(
               moment("2016-01-02"),
               moment("2016-01-01"),
               `day,
@@ -567,7 +567,7 @@ let () =
           )
           |> toBe(true);
           expect(
-            Moment.isAfterWithDuration(
+            Moment.isAfterWithGranularity(
               moment("2016-01-02"),
               moment("2016-01-01"),
               `month,
@@ -575,7 +575,7 @@ let () =
           )
           |> toBe(false);
           expect(
-            Moment.isAfterWithDuration(
+            Moment.isAfterWithGranularity(
               moment("2016-01-02"),
               moment("2016-01-01"),
               `year,
@@ -583,7 +583,7 @@ let () =
           )
           |> toBe(false);
           expect(
-            Moment.isAfterWithDuration(
+            Moment.isAfterWithGranularity(
               moment("2017-01-02"),
               moment("2016-01-01"),
               `year,

@@ -256,7 +256,7 @@ module Moment = {
   [@bs.send] external isBefore : (t, t) => bool = "";
   [@bs.send] external isAfter : (t, t) => bool = "";
   [@bs.send]
-  external isAfterWithDuration :
+  external isAfterWithGranularity :
     (
       t,
       t,
