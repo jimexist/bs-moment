@@ -557,6 +557,40 @@ let () =
           )
           |> toBe(true)
         );
+        test("#isAfterWithDuration", () => {
+          expect(
+            Moment.isAfterWithDuration(
+              moment("2016-01-02"),
+              moment("2016-01-01"),
+              `day,
+            ),
+          )
+          |> toBe(true);
+          expect(
+            Moment.isAfterWithDuration(
+              moment("2016-01-02"),
+              moment("2016-01-01"),
+              `month,
+            ),
+          )
+          |> toBe(false);
+          expect(
+            Moment.isAfterWithDuration(
+              moment("2016-01-02"),
+              moment("2016-01-01"),
+              `year,
+            ),
+          )
+          |> toBe(false);
+          expect(
+            Moment.isAfterWithDuration(
+              moment("2017-01-02"),
+              moment("2016-01-01"),
+              `year,
+            ),
+          )
+          |> toBe(true);
+        });
         test("#isSameOrAfter", () =>
           expect(
             Moment.isSameOrAfter(
