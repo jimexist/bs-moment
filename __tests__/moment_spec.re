@@ -26,7 +26,7 @@ let () =
               moment("2016-01-01"),
               {
                 let original = moment("2017-01-01");
-                Moment.mutableSubtract(original, duration(1, `years));
+                Moment.mutableSubtract(original, duration(1., `years));
                 original;
               },
             ),
@@ -38,8 +38,8 @@ let () =
             Moment.isSame(
               moment("2017-01-01"),
               moment("2017-01-04")
-              |> Moment.subtract(~duration=duration(1, `days))
-              |> Moment.subtract(~duration=duration(2, `days)),
+              |> Moment.subtract(~duration=duration(1., `days))
+              |> Moment.subtract(~duration=duration(2., `days)),
             ),
           )
           |> toBe(true)
@@ -80,7 +80,7 @@ let () =
               moment("2017-01-04"),
               {
                 let original = moment("2017-01-01");
-                Moment.mutableAdd(original, duration(3, `days));
+                Moment.mutableAdd(original, duration(3., `days));
                 original;
               },
             ),
@@ -92,8 +92,8 @@ let () =
             Moment.isSame(
               moment("2017-01-04"),
               moment("2017-01-01")
-              |> Moment.add(~duration=duration(1, `days))
-              |> Moment.add(~duration=duration(2, `days)),
+              |> Moment.add(~duration=duration(1., `days))
+              |> Moment.add(~duration=duration(2., `days)),
             ),
           )
           |> toBe(true)
@@ -671,7 +671,7 @@ let () =
     ExpectJs.(
       () => {
         test("get duration", () =>
-          expect(duration(2, `days)) |> toBeTruthy
+          expect(duration(2., `days)) |> toBeTruthy
         );
         test("get duration millis", () =>
           expect(durationMillis(2)) |> toBeTruthy
@@ -680,60 +680,60 @@ let () =
           expect(durationFormat("P2D") |> Duration.toJSON) |> toBe("P2D")
         );
         test("#milliseconds", () =>
-          expect(duration(2, `milliseconds) |> Duration.milliseconds)
+          expect(duration(2., `milliseconds) |> Duration.milliseconds)
           |> toBe(2)
         );
         test("#seconds", () =>
-          expect(duration(2, `seconds) |> Duration.seconds) |> toBe(2)
+          expect(duration(2., `seconds) |> Duration.seconds) |> toBe(2)
         );
         test("#asSeconds", () =>
-          expect(duration(2, `seconds) |> Duration.asSeconds) |> toBe(2.)
+          expect(duration(2., `seconds) |> Duration.asSeconds) |> toBe(2.)
         );
         test("#minutes", () =>
-          expect(duration(2, `minutes) |> Duration.minutes) |> toBe(2)
+          expect(duration(2., `minutes) |> Duration.minutes) |> toBe(2)
         );
         test("#asMinutes", () =>
-          expect(duration(2, `minutes) |> Duration.asMinutes) |> toBe(2.)
+          expect(duration(2., `minutes) |> Duration.asMinutes) |> toBe(2.)
         );
         test("#hours", () =>
-          expect(duration(2, `hours) |> Duration.hours) |> toBe(2)
+          expect(duration(2., `hours) |> Duration.hours) |> toBe(2)
         );
         test("#asHours", () =>
-          expect(duration(2, `hours) |> Duration.asHours) |> toBe(2.)
+          expect(duration(2., `hours) |> Duration.asHours) |> toBe(2.)
         );
         test("#days", () =>
-          expect(duration(2, `days) |> Duration.days) |> toBe(2)
+          expect(duration(2., `days) |> Duration.days) |> toBe(2)
         );
         test("#asDays", () =>
-          expect(duration(2, `days) |> Duration.asDays) |> toBe(2.)
+          expect(duration(2., `days) |> Duration.asDays) |> toBe(2.)
         );
         test("#weeks", () =>
-          expect(duration(2, `weeks) |> Duration.weeks) |> toBe(2)
+          expect(duration(2., `weeks) |> Duration.weeks) |> toBe(2)
         );
         test("#asWeeks", () =>
-          expect(duration(2, `weeks) |> Duration.asWeeks) |> toBe(2.)
+          expect(duration(2., `weeks) |> Duration.asWeeks) |> toBe(2.)
         );
         test("#months", () =>
-          expect(duration(2, `months) |> Duration.months) |> toBe(2)
+          expect(duration(2., `months) |> Duration.months) |> toBe(2)
         );
         test("#asMonths", () =>
-          expect(duration(2, `months) |> Duration.asMonths) |> toBe(2.)
+          expect(duration(2., `months) |> Duration.asMonths) |> toBe(2.)
         );
         test("#years", () =>
-          expect(duration(2, `years) |> Duration.years) |> toBe(2)
+          expect(duration(2., `years) |> Duration.years) |> toBe(2)
         );
         test("#asYears", () =>
-          expect(duration(2, `years) |> Duration.asYears) |> toBe(2.)
+          expect(duration(2., `years) |> Duration.asYears) |> toBe(2.)
         );
         test("#as", () =>
-          expect(duration(2, `days) |> Duration.asUnitOfTime(`days))
+          expect(duration(2., `days) |> Duration.asUnitOfTime(`days))
           |> toBe(2.)
         );
         test("#toJSON", () =>
-          expect(duration(2, `days) |> Duration.toJSON) |> toBe("P2D")
+          expect(duration(2., `days) |> Duration.toJSON) |> toBe("P2D")
         );
         test("#humanize", () =>
-          expect(duration(2, `days) |> Duration.humanize) |> toBe("2 days")
+          expect(duration(2., `days) |> Duration.humanize) |> toBe("2 days")
         );
       }
     ),
