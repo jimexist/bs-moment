@@ -42,7 +42,7 @@ module Duration = {
 [@bs.module "moment"]
 external duration :
   (
-    int,
+    float,
     [@bs.string]
     [
       | `years
