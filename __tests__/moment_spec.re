@@ -668,12 +668,12 @@ let () =
           expect(Moment.isSame(expected, Moment.startOf(`week, inputDate)))
           |> toBe(true);
         });
-        test("#startOf isoweek", () => {
+        test("#startOf isoWeek", () => {
           let inputDate = moment("2017-01-10 03:04:05.678");
           let expected = moment("2017-01-09T00:00:00.000");
 
           expect(
-            Moment.isSame(expected, Moment.startOf(`isoweek, inputDate)),
+            Moment.isSame(expected, Moment.startOf(`isoWeek, inputDate)),
           )
           |> toBe(true);
         });
@@ -684,11 +684,11 @@ let () =
           expect(Moment.isSame(expected, Moment.endOf(`week, inputDate)))
           |> toBe(true);
         });
-        test("#endOf isoweek", () => {
+        test("#endOf isoWeek", () => {
           let inputDate = moment("2017-01-10 03:04:05.678");
           let expected = moment("2017-01-15T23:59:59.999");
 
-          expect(Moment.isSame(expected, Moment.endOf(`isoweek, inputDate)))
+          expect(Moment.isSame(expected, Moment.endOf(`isoWeek, inputDate)))
           |> toBe(true);
         });
       }
