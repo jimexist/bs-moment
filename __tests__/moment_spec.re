@@ -661,6 +661,36 @@ let () =
           expect(moment("2017-01-02 03:04:05.678") |> Moment.weekday)
           |> toBe(1)
         );
+        test("#startOf week", () => {
+          let inputDate = moment("2017-01-10 03:04:05.678");
+          let expected = moment("2017-01-08T00:00:00.000");
+
+          expect(Moment.isSame(expected, Moment.startOf(`week, inputDate)))
+          |> toBe(true);
+        });
+        test("#startOf isoWeek", () => {
+          let inputDate = moment("2017-01-10 03:04:05.678");
+          let expected = moment("2017-01-09T00:00:00.000");
+
+          expect(
+            Moment.isSame(expected, Moment.startOf(`isoWeek, inputDate)),
+          )
+          |> toBe(true);
+        });
+        test("#endOf week", () => {
+          let inputDate = moment("2017-01-10 03:04:05.678");
+          let expected = moment("2017-01-14T23:59:59.999");
+
+          expect(Moment.isSame(expected, Moment.endOf(`week, inputDate)))
+          |> toBe(true);
+        });
+        test("#endOf isoWeek", () => {
+          let inputDate = moment("2017-01-10 03:04:05.678");
+          let expected = moment("2017-01-15T23:59:59.999");
+
+          expect(Moment.isSame(expected, Moment.endOf(`isoWeek, inputDate)))
+          |> toBe(true);
+        });
       }
     ),
   );

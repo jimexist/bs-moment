@@ -88,6 +88,7 @@ module Moment = {
         | `quarter
         | `month
         | `week
+        | `isoWeek
         | `day
         | `hour
         | `minute
@@ -111,6 +112,7 @@ module Moment = {
         | `quarter
         | `month
         | `week
+        | `isoWeek
         | `day
         | `hour
         | `minute
