@@ -1,15 +1,18 @@
 {
   "name": "bs-moment",
   "bsc-flags": ["-bs-super-errors"],
-  "sources": [
-    {
-      "dir": "src"
-    },
-    {
-      "dir": "__tests__",
-      "type": "dev"
-    }
+  "sources": [{
+    "dir": "src"
+  }, {
+    "dir": "__tests__",
+    "type": "dev"
+  }],
+  "package-specs": {
+    "module": "es6"
+  },
+  "bs-dev-dependencies": [
+    "@glennsl/bs-jest"
   ],
-  "bs-dev-dependencies": ["@glennsl/bs-jest"],
-  "refmt": 3
+  "refmt": 3,
+  "namespace": true
 }
