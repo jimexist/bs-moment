@@ -691,6 +691,22 @@ let () =
           expect(Moment.isSame(expected, Moment.endOf(`isoWeek, inputDate)))
           |> toBe(true);
         });
+
+        test("#momentUtc Z", () => {
+          let dateStr = "2017-01-10T03:04";
+
+          expect(
+            momentUtc(dateStr ++ "Z") |> Moment.format("YYYY-MM-DDTHH:mm"),
+          )
+          |> toBe(dateStr);
+        });
+
+        test("#momentUtc no Z", () => {
+          let dateStr = "2017-01-10T03:04";
+
+          expect(momentUtc(dateStr) |> Moment.format("YYYY-MM-DDTHH:mm"))
+          |> toBe(dateStr);
+        });
       }
     ),
   );
