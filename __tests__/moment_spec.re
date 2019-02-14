@@ -692,7 +692,7 @@ let () =
           |> toBe(true);
         });
 
-        test("#momentUtc Z", () => {
+        test("#momentUtc Z (default format)", () => {
           let dateStr = "2017-01-10T03:04";
 
           expect(
@@ -701,10 +701,31 @@ let () =
           |> toBe(dateStr);
         });
 
-        test("#momentUtc no Z", () => {
+        test("#momentUtc no Z (default format)", () => {
           let dateStr = "2017-01-10T03:04";
 
           expect(momentUtc(dateStr) |> Moment.format("YYYY-MM-DDTHH:mm"))
+          |> toBe(dateStr);
+        });
+
+        test("#momentUtc Z (format defined)", () => {
+          let format = "DD-MM-YYYY HH : ss";
+          let dateStr = "10-01-2017 03 : 04";
+
+          expect(
+            momentUtc(~format=[|format|], dateStr ++ "Z")
+            |> Moment.format(format),
+          )
+          |> toBe(dateStr);
+        });
+
+        test("#momentUtc no Z (format defined)", () => {
+          let format = "DD-MM-YYYY HH : ss";
+          let dateStr = "10-01-2017 03 : 04";
+
+          expect(
+            momentUtc(~format=[|format|], dateStr) |> Moment.format(format),
+          )
           |> toBe(dateStr);
         });
       }
