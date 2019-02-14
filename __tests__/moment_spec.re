@@ -692,6 +692,16 @@ let () =
           |> toBe(true);
         });
 
+        test("#moment (format defined)", () => {
+          let format = "DD-MM-YYYY HH : ss";
+          let dateStr = "10-01-2017 03 : 04";
+
+          expect(
+            moment(~format=[|format|], dateStr) |> Moment.format(format),
+          )
+          |> toBe(dateStr);
+        });
+
         test("#momentUtc Z (default format)", () => {
           let dateStr = "2017-01-10T03:04";
 
