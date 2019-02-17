@@ -297,11 +297,17 @@ external momentWithFormat: (string, string) => Moment.t = "moment";
 [@bs.module] external momentWithDate: Js.Date.t => Moment.t = "moment";
 
 [@bs.module]
-external momentWithFormats: (string, list(string)) => Moment.t = "moment";
+external momentWithFormats: (string, array(string)) => Moment.t = "moment";
 
 [@bs.module] external momentWithTimestampMS: float => Moment.t = "moment";
 
 [@bs.module] external momentWithComponents: list(int) => Moment.t = "moment";
+
+[@bs.module "moment"]
+external momentUtcWithFormats: (string, array(string)) => Moment.t = "utc";
+
+[@bs.module "moment"]
+external momentUtcDefaultFormat: string => Moment.t = "utc";
 
 let momentWithUnix = (timestamp: int) =>
   momentWithTimestampMS(float_of_int(timestamp) *. 1000.0);
@@ -325,6 +331,12 @@ external diff:
   ) =>
   float =
   "";
+
+let momentUtc = (~format=?, value) =>
+  switch (format) {
+  | Some(f) => momentUtcWithFormats(value, f)
+  | None => momentUtcDefaultFormat(value)
+  };
 
 let moment = (~format=?, value) =>
   switch (format) {
