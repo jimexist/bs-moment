@@ -551,6 +551,27 @@ let () =
           )
           |> toBe(true)
         );
+
+        test("#isSameOrBeforeWithGranularity", () => {
+          expect(
+            Moment.isSameOrBeforeWithGranularity(
+              moment("2016-01-01"),
+              moment("2016-01-02"),
+              `day,
+            ),
+          )
+          |> toBe(false)
+          |> ignore;
+
+          expect(
+            Moment.isSameOrBeforeWithGranularity(
+              moment("2016-01-01"),
+              moment("2016-01-01"),
+              `day,
+            ),
+          )
+          |> toBe(true);
+        });
         test("#isAfter", () =>
           expect(
             Moment.isAfter(moment("2016-01-02"), moment("2016-01-01")),
@@ -565,7 +586,8 @@ let () =
               `day,
             ),
           )
-          |> toBe(true);
+          |> toBe(true)
+          |> ignore;
           expect(
             Moment.isAfterWithGranularity(
               moment("2016-01-02"),
@@ -573,7 +595,8 @@ let () =
               `month,
             ),
           )
-          |> toBe(false);
+          |> toBe(false)
+          |> ignore;
           expect(
             Moment.isAfterWithGranularity(
               moment("2016-01-02"),
@@ -581,7 +604,8 @@ let () =
               `year,
             ),
           )
-          |> toBe(false);
+          |> toBe(false)
+          |> ignore;
           expect(
             Moment.isAfterWithGranularity(
               moment("2017-01-02"),
