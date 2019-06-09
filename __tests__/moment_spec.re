@@ -551,12 +551,70 @@ let () =
           )
           |> toBe(true)
         );
+
+        test("#isSameOrBeforeWithGranularity", () => {
+          expect(
+            Moment.isSameOrBeforeWithGranularity(
+              moment("2016-01-01"),
+              moment("2016-01-02"),
+              `day,
+            ),
+          )
+          |> toBe(false)
+          |> ignore;
+
+          expect(
+            Moment.isSameOrBeforeWithGranularity(
+              moment("2016-01-01"),
+              moment("2016-01-01"),
+              `day,
+            ),
+          )
+          |> toBe(true);
+        });
         test("#isAfter", () =>
           expect(
             Moment.isAfter(moment("2016-01-02"), moment("2016-01-01")),
           )
           |> toBe(true)
         );
+        test("#isAfterWithGranularity", () => {
+          expect(
+            Moment.isAfterWithGranularity(
+              moment("2016-01-02"),
+              moment("2016-01-01"),
+              `day,
+            ),
+          )
+          |> toBe(true)
+          |> ignore;
+          expect(
+            Moment.isAfterWithGranularity(
+              moment("2016-01-02"),
+              moment("2016-01-01"),
+              `month,
+            ),
+          )
+          |> toBe(false)
+          |> ignore;
+          expect(
+            Moment.isAfterWithGranularity(
+              moment("2016-01-02"),
+              moment("2016-01-01"),
+              `year,
+            ),
+          )
+          |> toBe(false)
+          |> ignore;
+          expect(
+            Moment.isAfterWithGranularity(
+              moment("2017-01-02"),
+              moment("2016-01-01"),
+              `year,
+            ),
+          )
+          |> toBe(true);
+        });
         test("#isSameOrAfter", () =>
           expect(
             Moment.isSameOrAfter(

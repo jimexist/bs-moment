@@ -65,7 +65,6 @@ external durationFormat: string => Duration.t = "duration";
 
 module Moment = {
   type t;
-
   [@bs.send.pipe: t] external clone: t = "";
   [@bs.send] external mutableAdd: (t, Duration.t) => unit = "add";
   let add = (~duration, moment) => {
@@ -255,6 +254,42 @@ module Moment = {
   [@bs.send] external isValid: t => bool = "";
   [@bs.send] external isBefore: (t, t) => bool = "";
   [@bs.send] external isAfter: (t, t) => bool = "";
+  [@bs.send]
+  external isAfterWithGranularity:
+    (
+      t,
+      t,
+      [@bs.string] [
+        | `year
+        | `month
+        | `week
+        | `isoWeek
+        | `day
+        | `hour
+        | `minute
+        | `second
+      ]
+    ) =>
+    bool =
+    "isAfter";
+  [@bs.send]
+  external isSameOrBeforeWithGranularity:
+    (
+      t,
+      t,
+      [@bs.string] [
+        | `year
+        | `month
+        | `week
+        | `isoWeek
+        | `day
+        | `hour
+        | `minute
+        | `second
+      ]
+    ) =>
+    bool =
+    "isSameOrBefore";
   [@bs.send] external isSame: (t, t) => bool = "";
   [@bs.send]
   external isSameWithGranularity:
