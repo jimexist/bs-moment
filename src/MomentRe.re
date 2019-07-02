@@ -362,7 +362,8 @@ external diff:
       | `minutes
       | `seconds
       | `milliseconds
-    ]
+    ],
+    bool
   ) =>
   float =
   "";
