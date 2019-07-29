@@ -367,6 +367,27 @@ external diff:
   float =
   "";
 
+  [@bs.send]
+external diffWithPrecision:
+  (
+    Moment.t,
+    Moment.t,
+    [@bs.string] [
+      | `years
+      | `quarters
+      | `months
+      | `weeks
+      | `days
+      | `hours
+      | `minutes
+      | `seconds
+      | `milliseconds
+    ],
+    bool
+  ) =>
+  float =
+  "diff";
+
 let momentUtc = (~format=?, value) =>
   switch (format) {
   | Some(f) => momentUtcWithFormats(value, f)
