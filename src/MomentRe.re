@@ -59,7 +59,7 @@ external duration:
   Duration.t =
   "";
 
-[@bs.module "moment"] external durationMillis: int => Duration.t = "duration";
+[@bs.module "moment"] external durationMillis: float => Duration.t = "duration";
 
 [@bs.module "moment"]
 external durationFormat: string => Duration.t = "duration";

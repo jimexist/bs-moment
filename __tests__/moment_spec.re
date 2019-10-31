@@ -827,7 +827,7 @@ let () =
           expect(duration(2., `days)) |> toBeTruthy
         );
         test("get duration millis", () =>
-          expect(durationMillis(2)) |> toBeTruthy
+          expect(durationMillis(2.0)) |> toBeTruthy
         );
         test("get duration format", () =>
           expect(durationFormat("P2D") |> Duration.toJSON) |> toBe("P2D")
