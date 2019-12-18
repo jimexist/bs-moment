@@ -19,6 +19,7 @@ module Duration = {
   [@bs.send] external years: t => int = "";
   [@bs.send] external asYears: t => float = "";
   [@bs.send] external toJSON: t => string = "";
+  [@bs.send] external toISOString: t => string = "";
   [@bs.send.pipe: t]
   external asUnitOfTime:
     (
@@ -316,9 +317,11 @@ module Moment = {
   external toMoment: (t, ~other: t, ~format: string) => string = "to";
   [@bs.send] external valueOf: t => float = "";
   [@bs.send] external daysInMonth: t => int = "";
-  [@bs.send] external toJSON: t => string = "";
+  [@bs.send] external toJSON: t => Js.null(string) = "";
+  let toJSON = (moment) => toJSON(moment) |> Js.Null.toOption;
   [@bs.send] external toDate: t => Js.Date.t = "";
   [@bs.send] external toUnix: t => int = "unix";
+  [@bs.send.pipe: t] external toISOString: (~keepOffset: bool=?) => string = "";
 };
 
 /* parse */
