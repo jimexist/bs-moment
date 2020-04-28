@@ -323,21 +323,26 @@ module Moment = {
 };
 
 /* parse */
-// [@bs.module] external momentNow: unit => Moment.t = "moment";
 
-[@bs.module] external momentDefaultFormat: string => Moment.t = "moment";
+[@bs.module "moment"] external momentNow: unit => Moment.t = "default";
 
-// [@bs.module]
-// external momentWithFormat: (string, string) => Moment.t = "moment";
+[@bs.module "moment"]
+external momentDefaultFormat: string => Moment.t = "default";
 
-// [@bs.module] external momentWithDate: Js.Date.t => Moment.t = "moment";
+[@bs.module "moment"]
+external momentWithFormat: (string, string) => Moment.t = "default";
 
-[@bs.module]
-external momentWithFormats: (string, array(string)) => Moment.t = "moment";
+[@bs.module "moment"]
+external momentWithDate: Js.Date.t => Moment.t = "default";
 
-[@bs.module] external momentWithTimestampMS: float => Moment.t = "moment";
+[@bs.module "moment"]
+external momentWithFormats: (string, array(string)) => Moment.t = "default";
 
-// [@bs.module] external momentWithComponents: list(int) => Moment.t = "moment";
+[@bs.module "moment"]
+external momentWithTimestampMS: float => Moment.t = "default";
+
+[@bs.module "moment"]
+external momentWithComponents: array(int) => Moment.t = "default";
 
 [@bs.module "moment"]
 external momentUtcWithFormats: (string, array(string)) => Moment.t = "utc";
@@ -400,23 +405,3 @@ let moment = (~format=?, value) =>
   | Some(f) => momentWithFormats(value, f)
   | None => momentDefaultFormat(value)
   };
-
-[@bs.module "moment"] external momentNow: unit => Moment.t = "default";
-
-[@bs.module "moment"]
-external momentDefaultFormat: string => Moment.t = "default";
-
-[@bs.module "moment"]
-external momentWithFormat: (string, string) => Moment.t = "default";
-
-[@bs.module "moment"]
-external momentWithDate: Js.Date.t => Moment.t = "default";
-
-[@bs.module "moment"]
-external momentWithFormats: (string, list(string)) => Moment.t = "default";
-
-[@bs.module "moment"]
-external momentWithTimestampMS: float => Moment.t = "default";
-
-[@bs.module "moment"]
-external momentWithComponents: list(int) => Moment.t = "default";
