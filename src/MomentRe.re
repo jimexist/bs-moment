@@ -1,25 +1,25 @@
 /* duration */
 module Duration = {
   type t;
-  [@bs.send] external humanize: t => string = "";
-  [@bs.send] external milliseconds: t => int = "";
-  [@bs.send] external asMilliseconds: t => float = "";
-  [@bs.send] external seconds: t => int = "";
-  [@bs.send] external asSeconds: t => float = "";
-  [@bs.send] external minutes: t => int = "";
-  [@bs.send] external asMinutes: t => float = "";
-  [@bs.send] external hours: t => int = "";
-  [@bs.send] external asHours: t => float = "";
-  [@bs.send] external days: t => int = "";
-  [@bs.send] external asDays: t => float = "";
-  [@bs.send] external weeks: t => int = "";
-  [@bs.send] external asWeeks: t => float = "";
-  [@bs.send] external months: t => int = "";
-  [@bs.send] external asMonths: t => float = "";
-  [@bs.send] external years: t => int = "";
-  [@bs.send] external asYears: t => float = "";
-  [@bs.send] external toJSON: t => string = "";
-  [@bs.send] external toISOString: t => string = "";
+  [@bs.send] external humanize: t => string = "humanize";
+  [@bs.send] external milliseconds: t => int = "milliseconds";
+  [@bs.send] external asMilliseconds: t => float = "asMilliseconds";
+  [@bs.send] external seconds: t => int = "seconds";
+  [@bs.send] external asSeconds: t => float = "asSeconds";
+  [@bs.send] external minutes: t => int = "minutes";
+  [@bs.send] external asMinutes: t => float = "asMinutes";
+  [@bs.send] external hours: t => int = "hours";
+  [@bs.send] external asHours: t => float = "asHours";
+  [@bs.send] external days: t => int = "days";
+  [@bs.send] external asDays: t => float = "asDays";
+  [@bs.send] external weeks: t => int = "weeks";
+  [@bs.send] external asWeeks: t => float = "asWeeks";
+  [@bs.send] external months: t => int = "months";
+  [@bs.send] external asMonths: t => float = "asMonths";
+  [@bs.send] external years: t => int = "years";
+  [@bs.send] external asYears: t => float = "asYears";
+  [@bs.send] external toJSON: t => string = "toJSON";
+  [@bs.send] external toISOString: t => string = "toISOString";
   [@bs.send.pipe: t]
   external asUnitOfTime:
     (
@@ -57,7 +57,7 @@ external duration:
     ]
   ) =>
   Duration.t =
-  "";
+  "duration";
 
 [@bs.module "moment"] external durationMillis: float => Duration.t = "duration";
 
@@ -66,7 +66,7 @@ external durationFormat: string => Duration.t = "duration";
 
 module Moment = {
   type t;
-  [@bs.send.pipe: t] external clone: t = "";
+  [@bs.send.pipe: t] external clone: t = "clone";
   [@bs.send] external mutableAdd: (t, Duration.t) => unit = "add";
   let add = (~duration, moment) => {
     let clone = clone(moment);
@@ -241,20 +241,20 @@ module Moment = {
     ]
     ) =>
     int =
-    "";
-  [@bs.send.pipe: t] external millisecond: int = "";
-  [@bs.send.pipe: t] external second: int = "";
-  [@bs.send.pipe: t] external minute: int = "";
-  [@bs.send.pipe: t] external hour: int = "";
-  [@bs.send.pipe: t] external day: int = "";
-  [@bs.send.pipe: t] external date: int = "";
-  [@bs.send.pipe: t] external week: int = "";
-  [@bs.send.pipe: t] external month: int = "";
-  [@bs.send.pipe: t] external year: int = "";
-  [@bs.send.pipe: t] external weekday: int = "";
-  [@bs.send] external isValid: t => bool = "";
-  [@bs.send] external isBefore: (t, t) => bool = "";
-  [@bs.send] external isAfter: (t, t) => bool = "";
+    "get";
+  [@bs.send.pipe: t] external millisecond: int = "millisecond";
+  [@bs.send.pipe: t] external second: int = "second";
+  [@bs.send.pipe: t] external minute: int = "minute";
+  [@bs.send.pipe: t] external hour: int = "hour";
+  [@bs.send.pipe: t] external day: int = "day";
+  [@bs.send.pipe: t] external date: int = "date";
+  [@bs.send.pipe: t] external week: int = "week";
+  [@bs.send.pipe: t] external month: int = "month";
+  [@bs.send.pipe: t] external year: int = "year";
+  [@bs.send.pipe: t] external weekday: int = "weekday";
+  [@bs.send] external isValid: t => bool = "isValid";
+  [@bs.send] external isBefore: (t, t) => bool = "isBefore";
+  [@bs.send] external isAfter: (t, t) => bool = "isAfter";
   [@bs.send]
   external isAfterWithGranularity:
     (
@@ -291,37 +291,37 @@ module Moment = {
     ) =>
     bool =
     "isSameOrBefore";
-  [@bs.send] external isSame: (t, t) => bool = "";
+  [@bs.send] external isSame: (t, t) => bool = "isSame";
   [@bs.send]
   external isSameWithGranularity:
     (t, t, [@bs.string] [ | `year | `month | `day]) => bool =
     "isSame";
-  [@bs.send] external isSameOrBefore: (t, t) => bool = "";
-  [@bs.send] external isSameOrAfter: (t, t) => bool = "";
-  [@bs.send] external isBetween: (t, t, t) => bool = "";
-  [@bs.send] external isDST: t => bool = "";
-  [@bs.send] external isLeapYear: t => bool = "";
+  [@bs.send] external isSameOrBefore: (t, t) => bool = "isSameOrBefore";
+  [@bs.send] external isSameOrAfter: (t, t) => bool = "isSameOrAfter";
+  [@bs.send] external isBetween: (t, t, t) => bool = "isBetween";
+  [@bs.send] external isDST: t => bool = "isDST";
+  [@bs.send] external isLeapYear: t => bool = "isLeapYear";
   /* display */
-  [@bs.send.pipe: t] external format: string => string = "";
+  [@bs.send.pipe: t] external format: string => string = "format";
   [@bs.send.pipe: t] external defaultFormat: string = "format";
-  [@bs.send.pipe: t] external utc: string => t = "";
+  [@bs.send.pipe: t] external utc: string => t = "utc";
   [@bs.send.pipe: t] external defaultUtc: t = "utc";
-  [@bs.send.pipe: t] external locale: string => t = "";
+  [@bs.send.pipe: t] external locale: string => t = "locale";
   [@bs.send]
-  external fromNow: (t, ~withoutSuffix: option(bool)) => string = "";
+  external fromNow: (t, ~withoutSuffix: option(bool)) => string = "fromNow";
   [@bs.send]
   external fromMoment: (t, ~other: t, ~format: option(string)) => string =
     "from";
-  [@bs.send] external toNow: (t, ~withoutSuffix: option(bool)) => string = "";
+  [@bs.send] external toNow: (t, ~withoutSuffix: option(bool)) => string = "toNow";
   [@bs.send]
   external toMoment: (t, ~other: t, ~format: string) => string = "to";
-  [@bs.send] external valueOf: t => float = "";
-  [@bs.send] external daysInMonth: t => int = "";
-  [@bs.send] external toJSON: t => Js.null(string) = "";
+  [@bs.send] external valueOf: t => float = "valueOf";
+  [@bs.send] external daysInMonth: t => int = "daysInMonth";
+  [@bs.send] external toJSON: t => Js.null(string) = "toJSON";
   let toJSON = (moment) => toJSON(moment) |> Js.Null.toOption;
-  [@bs.send] external toDate: t => Js.Date.t = "";
+  [@bs.send] external toDate: t => Js.Date.t = "toDate";
   [@bs.send] external toUnix: t => int = "unix";
-  [@bs.send.pipe: t] external toISOString: (~keepOffset: bool=?) => string = "";
+  [@bs.send.pipe: t] external toISOString: (~keepOffset: bool=?) => string = "toISOString";
 };
 
 /* parse */
@@ -368,7 +368,7 @@ external diff:
     ]
   ) =>
   float =
-  "";
+  "diff";
 
   [@bs.send]
 external diffWithPrecision:
