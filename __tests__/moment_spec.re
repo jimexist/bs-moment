@@ -668,10 +668,16 @@ let () =
           expect(moment("2016-01-01 00:00:00Z") |> Moment.valueOf)
           |> toBeCloseTo(1451606400000.)
         );
-        test("#toJSON", () =>
-          expect(moment("2016-01-01") |> Moment.toJSON)
-          |> toContainString("000Z")
-        );
+        describe("#toJSON", () => {
+          test("valid", () =>
+            expect(moment("2016-01-01") |> Moment.toJSON |> Belt.Option.getExn)
+            |> toContainString("000Z")
+          );
+          test("invalid", () =>
+            expect(moment("9999-99-99") |> Moment.toJSON)
+            |> toBe(None)
+          );
+        });
         test("#toDate", () =>
           expect(isJsDateValid(moment("2016-01-01") |> Moment.toDate))
           |> toBe(true)
@@ -680,6 +686,18 @@ let () =
           expect(moment("6 Mar 2017 21:22:23 GMT") |> Moment.toUnix)
           |> toBe(1488835343)
         );
+        describe("#toISOString", () => {
+          test("default", () =>
+            expect(moment("6 Mar 2017 21:22:23 GMT") |> Moment.toISOString)
+            |> toBe("2017-03-06T21:22:23.000Z")
+          );
+          test("keepOffset", () =>
+            moment("6 Mar 2017 21:22:23 GMT") |> Moment.toISOString(~keepOffset=true)
+            |> Js.String.includes("000Z")
+            |> expect
+            |> toBe(false)
+          );
+        });
         test("#get", () =>
           expect(moment("2017-01-02 03:04:05.678") |> Moment.get(`day))
           |> toBe(1)
@@ -809,7 +827,7 @@ let () =
           expect(duration(2., `days)) |> toBeTruthy
         );
         test("get duration millis", () =>
-          expect(durationMillis(2)) |> toBeTruthy
+          expect(durationMillis(2.0)) |> toBeTruthy
         );
         test("get duration format", () =>
           expect(durationFormat("P2D") |> Duration.toJSON) |> toBe("P2D")
@@ -865,6 +883,9 @@ let () =
           |> toBe(2.)
         );
         test("#toJSON", () =>
+          expect(duration(2., `days) |> Duration.toJSON) |> toBe("P2D")
+        );
+        test("#toISOString", () =>
           expect(duration(2., `days) |> Duration.toJSON) |> toBe("P2D")
         );
         test("#humanize", () =>
