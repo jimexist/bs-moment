@@ -6,7 +6,7 @@ node_js:
   - "14"
   - "12"
 
-cache: yarn
+cache: npm
 
 notifications:
   webhooks: "https://www.travisbuddy.com/"
