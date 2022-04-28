@@ -1,6 +1,6 @@
 # bs-moment
 
-[![Build Status](https://travis-ci.org/Jimexist/bs-moment.svg?branch=master)](https://travis-ci.org/Jimexist/bs-moment)
+[![CI](https://github.com/Jimexist/bs-moment/actions/workflows/ci.yml/badge.svg)](https://github.com/Jimexist/bs-moment/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/bs-moment.svg)](https://www.npmjs.com/package/bs-moment)
 
 [BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [Moment.js](https://momentjs.com/).
