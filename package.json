@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "description": "BuckleScript bindings for Moment.js",
   "main": "lib/js/src/MomentRe.js",
-  "repository": "git@github.com:BuckleTypes/bs-moment.git",
+  "repository": "git@github.com:Jimexist/bs-moment.git",
   "author": "Jiayu Liu <jimexist@gmail.com>",
   "license": "MIT",
   "keywords": [
