@@ -1,13 +1,13 @@
 # bs-moment
 
-[![Build Status](https://travis-ci.org/reasonml-community/bs-moment.svg?branch=master)](https://travis-ci.org/reasonml-community/bs-moment)
+[![Build Status](https://travis-ci.org/Jimexist/bs-moment.svg?branch=master)](https://travis-ci.org/Jimexist/bs-moment)
 [![npm](https://img.shields.io/npm/v/bs-moment.svg)](https://www.npmjs.com/package/bs-moment)
 
 [BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [Moment.js](https://momentjs.com/).
 
 ## Status
 
-This package is still 🚧 WIP 🚧, but new bindings are added *as needed* instead of actively. Feel free to create an issue or PR if you find anything missing.
+This package is still 🚧 WIP 🚧, but new bindings are added _as needed_ instead of actively. Feel free to create an issue or PR if you find anything missing.
 
 ## Mutations
 
