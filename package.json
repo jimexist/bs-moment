@@ -17,9 +17,9 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "pretest": "yarn run build",
+    "pretest": "npm run build",
     "test": "jest",
-    "prepublish": "yarn run clean && yarn run build"
+    "prepublish": "npm run clean && npm run build"
   },
   "peerDependencies": {
     "moment": "^2.26.0"
