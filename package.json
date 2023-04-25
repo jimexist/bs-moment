@@ -27,7 +27,7 @@
   "devDependencies": {
     "@glennsl/bs-jest": "^0.7.0",
     "bs-platform": "^9.0.2",
-    "husky": "^4.2.5",
+    "husky": "^8.0.3",
     "jest": "^26.0.1",
     "moment": "^2.26.0"
   }
